@@ -167,7 +167,7 @@ public:
     /// the base speed.
     ///
     ///////////////////////////////////////////////////////////////////////////
-    [[ nodiscard ]] static void setGlobalSpeed(
+    static void setGlobalSpeed(
         float speed
     );
 
@@ -184,21 +184,22 @@ public:
     ///////////////////////////////////////////////////////////////////////////
     /// \brief Sets the local speed.
     ///
-    /// The local speed represents the aditional
+    /// The local speed represents the aditional speed. With a value of 0, it
+    /// moves to the speed of the global speed.
     ///
     ///////////////////////////////////////////////////////////////////////////
-    [[ nodiscard ]] void setLocalSpeed(
+    void setLocalSpeed(
         float speed
     );
 
     ///////////////////////////////////////////////////////////////////////////
     /// \brief Sets the local speed.
     ///
-    /// The global speed is common to every actors of the game, and represents
-    /// the base speed
+    /// The local speed represents the aditional speed. With a value of 0, it
+    /// moves to the speed of the global speed.
     ///
     ///////////////////////////////////////////////////////////////////////////
-    [[ nodiscard ]] aut getLocalSpeed() const
+    [[ nodiscard ]] auto getLocalSpeed() const
         -> float;
 
 
