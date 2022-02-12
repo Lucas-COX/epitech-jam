@@ -36,7 +36,6 @@ public:
     virtual ~AUi() = 0;
 
 
-
 private:
 
 };
