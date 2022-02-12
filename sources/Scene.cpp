@@ -40,8 +40,7 @@
 void ::rts::Scene::update()
 {
     m_window.handleEvents(*this);
-    // ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->update(); });
-    // ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->update(); });
+    ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->update(m_clock.getElapsed(), *actor); });
 }
 
 ///////////////////////////////////////////////////////////////////////////
