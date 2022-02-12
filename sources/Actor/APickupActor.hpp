@@ -5,13 +5,13 @@
 
 
 
-namespace rts {
+namespace rts::actor {
 
 
 
 class APickupActor
-    : public ::rts::AActor
-    , public ::rts::PickUp
+    : public ::rts::actor::AActor
+    , public ::rts::actor::PickUp
 {
 
 public:
@@ -62,4 +62,4 @@ private:
 
 
 
-} // namespace rts
+} // namespace rts::actor

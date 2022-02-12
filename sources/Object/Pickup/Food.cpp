@@ -1,5 +1,6 @@
+#if false
 #include <pch.hpp>
-#include <Object/Background.hpp>
+#include <Object/Pickup/Food.hpp>
 
 
 
@@ -11,11 +12,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
-::rts::object::Background::Background(
+::rts::object::Food::Food(
     const ::std::string& filename
 )
     : ::rts::actor::APickupActor{ filename }
 {}
 
 ///////////////////////////////////////////////////////////////////////////
-::rts::object::Background::~Background() = default;
+::rts::object::Food::~Food() = default;
+#endif

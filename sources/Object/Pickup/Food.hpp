@@ -8,7 +8,7 @@ namespace rts::object {
 
 
 
-class Background
+class Food
     : public ::rts::actor::APickupActor
 {
 
@@ -25,7 +25,7 @@ public:
     /// \brief Constructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    explicit Background(
+    explicit Food(
         const ::std::string& filename
     );
 
@@ -33,7 +33,7 @@ public:
     /// \brief Destructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    ~Background();
+    ~Food();
 
 
 
