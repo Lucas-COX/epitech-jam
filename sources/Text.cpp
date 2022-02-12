@@ -18,7 +18,6 @@ bool rts::Text::getHover(const sf::RenderWindow &window) const
 {
     return false;
 }
-
 auto rts::Text::getText() const
     -> const sf::Text&
 {

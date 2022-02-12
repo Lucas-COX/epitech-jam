@@ -10,7 +10,7 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-#include <Text.hpp>
+#include "Text.hpp"
 
 namespace rts {
     class Menu
