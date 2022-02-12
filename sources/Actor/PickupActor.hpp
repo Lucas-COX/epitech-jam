@@ -27,7 +27,11 @@ public:
     /// \brief Constructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    explicit APickupActor();
+    explicit APickupActor(
+        const ::std::string& filenameSprite,
+        const ::std::string& filenameSound,
+        ::std::uint8_t nmemb
+    );
 
     ///////////////////////////////////////////////////////////////////////////
     /// \brief Destructor
