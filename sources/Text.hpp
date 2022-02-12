@@ -53,8 +53,13 @@ class Text {
             ::std::string filename
         ) -> sf::Font;
 
-    public:
-        static inline ::std::string fontFilepath{ "data/hotpizza.ttf" };
+        void center(int wSize, int pos);
+
+        void update(const rts::Window& window) const;
+
+        bool hittext(const sf::RenderWindow& window, sf::Text& text);
+
+        public : static inline ::std::string fontFilepath { "./data/hotpizza.ttf" };
 
     private:
         static sf::Font font;

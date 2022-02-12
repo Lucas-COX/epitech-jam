@@ -1,6 +1,7 @@
 #include <pch.hpp>
 #include <Scene.hpp>
 #include <Window.hpp>
+#include <Menu/Menu.hpp>
 
 
 int main(int argc, char **argv)
@@ -8,9 +9,9 @@ int main(int argc, char **argv)
     try {
         ::rts::Window window;
 
-        // if (::rts::menu{ window }.run()) {
-            // return EXIT_SUCCESS;
-        // }
+        if (::rts::Menu{ window }.run()) {
+            return EXIT_SUCCESS;
+        }
         ::rts::Scene scene{ window };
 
         while (!scene.isOver()) {

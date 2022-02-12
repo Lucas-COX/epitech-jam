@@ -83,7 +83,11 @@ public:
         ::rts::Scene& scene
     );
 
+    sf::Vector2u getSize() {
+        return m_window.getSize();
+    };
 
+    [[ nodiscard ]] const sf::RenderWindow &getWindow() const;
 
 private:
 
