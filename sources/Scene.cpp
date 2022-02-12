@@ -3,6 +3,7 @@
 #include <Window.hpp>
 #include <Actor/AActor.hpp>
 #include <Object/Background.hpp>
+#include <Object/MainCharacter.hpp>
 
 
 
@@ -20,7 +21,7 @@
     : m_window(window)
 {
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
-    m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("main.png"));
+    m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("main.png", 4));
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -47,8 +48,8 @@ void ::rts::Scene::update()
 void ::rts::Scene::draw() const
 {
     m_window.clear();
-    ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->draw(m_window); });
     ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->draw(m_window); });
+    ::std::ranges::for_each(m_actors, [this](auto& actor) { actor->draw(m_window); });
     m_window.display();
 }
 

@@ -12,9 +12,10 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::actor::AActor::AActor(
-    const ::std::string& filename
+    const ::std::string& filename,
+    uint8_t nmemb
 )
-    : ::rts::actor::Drawable{ filename }
+    : ::rts::actor::Drawable{ filename, nmemb }
 {}
 
 ///////////////////////////////////////////////////////////////////////////

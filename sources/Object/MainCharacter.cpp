@@ -12,9 +12,10 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::MainCharacter::MainCharacter(
-    const ::std::string& filename
+    const ::std::string& filename,
+    uint8_t nmemb
 )
-    : ::rts::actor::AActor{ filename }
+    : ::rts::actor::AActor{ filename, nmemb }
 {}
 
 ///////////////////////////////////////////////////////////////////////////
