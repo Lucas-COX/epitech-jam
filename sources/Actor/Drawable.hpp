@@ -125,6 +125,7 @@ private:
     uint8_t m_nmemb;
     uint8_t m_index;
     uint16_t m_rate;
+    float m_lastCall;
 };
 
 
