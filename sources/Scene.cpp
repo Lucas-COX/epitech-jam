@@ -1,8 +1,8 @@
 #include <pch.hpp>
 #include <Scene.hpp>
 #include <Window.hpp>
-
 #include <Actor/AActor.hpp>
+#include <Object/Background.hpp>
 
 
 
@@ -18,7 +18,9 @@
     ::rts::Window& window
 )
     : m_window(window)
-{}
+{
+    m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
+}
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::Scene::~Scene() = default;
@@ -36,14 +38,16 @@
 void ::rts::Scene::update()
 {
     m_window.handleEvents(*this);
+    // ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->update(); });
+    // ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->update(); });
 }
 
 ///////////////////////////////////////////////////////////////////////////
 void ::rts::Scene::draw() const
 {
     m_window.clear();
-    ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->draw(); });
-    // ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->draw(); });
+    ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->draw(m_window); });
+    ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->draw(m_window); });
     m_window.display();
 }
 

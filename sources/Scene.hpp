@@ -3,8 +3,8 @@
 #include <Clock.hpp>
 
 namespace rts { class Window; }
-namespace rts { class AActor; }
-namespace rts { class AUi; }
+namespace rts::actor { class AActor; }
+namespace rts::actor { class AUi; }
 
 
 
@@ -84,8 +84,8 @@ public:
 private:
 
     ::rts::Window& m_window;
-    ::std::vector<::std::shared_ptr<::rts::AActor>> m_actors;
-    ::std::vector<::std::shared_ptr<::rts::AUi>> m_ui;
+    ::std::vector<::std::shared_ptr<::rts::actor::AActor>> m_actors;
+    ::std::vector<::std::shared_ptr<::rts::actor::AUi>> m_uis;
     ::rts::Clock m_clock;
     bool m_isOver{ false };
 
