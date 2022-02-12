@@ -16,7 +16,8 @@
 ///////////////////////////////////////////////////////////////////////////
 ::rts::actor::Drawable::Drawable(
     const ::std::string& filename,
-    uint8_t nmemb
+    uint8_t nmemb,
+    uint16_t rate
 )
 {
     if (!m_texture.loadFromFile("./data/sprites/" + filename)) {
@@ -24,6 +25,7 @@
     }
     m_sprite.setTexture(m_texture);
     m_nmemb = nmemb;
+    m_rate = rate;
     if (nmemb > 0) {
         m_offset = computeOffset(filename, nmemb);
         m_sprite.setTextureRect(::sf::IntRect{
@@ -84,17 +86,17 @@ void ::rts::actor::Drawable::update(
 )
 {
     static ::rts::Time lastCall = 0.0f;
-    ::rts::Time elapsed = (deltaTime - lastCall) * 100;
+    ::rts::Time elapsed = (deltaTime - lastCall);
     // sprite
     m_sprite.setPosition(movable.getPosition());
     // m_sprite.setScale(movable.getScale()); // TODO scane
 
-    if (elapsed >= 3 && m_nmemb > 1) {
+    if (elapsed >= m_rate && m_nmemb > 1) {
         unsigned int tmp = m_sprite.getTextureRect().left + m_offset;
-        unsigned int left = tmp > m_texture.getSize().x ? 0 : tmp;
+        unsigned int left = tmp >= m_texture.getSize().x ? 0 : tmp;
         m_sprite.setTextureRect({
-            0,
             static_cast<int>(left),
+            0,
             static_cast<int>(m_offset),
             static_cast<int>(m_sprite.getLocalBounds().height)
         });
@@ -131,4 +133,9 @@ unsigned int ::rts::actor::Drawable::computeOffset(const std::string& filename, 
     width = ntohl(width);
     in.close();
     return nmemb == 0 ? width : width / nmemb;
+}
+
+void ::rts::actor::Drawable::setRefreshRate(uint16_t rate)
+{
+    m_rate = rate;
 }

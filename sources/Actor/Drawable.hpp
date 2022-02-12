@@ -28,7 +28,8 @@ public:
     ///////////////////////////////////////////////////////////////////////////
     explicit Drawable(
         const ::std::string& filename,
-        uint8_t nmemb = 0
+        uint8_t nmemb = 0,
+        uint16_t rate = 300
     );
 
     ///////////////////////////////////////////////////////////////////////////
@@ -104,12 +105,20 @@ public:
     ///////////////////////////////////////////////////////////////////////////
     static unsigned int computeOffset(const std::string &filename, uint8_t nmemb);
 
+    ///////////////////////////////////////////////////////////////////////////
+    /// \brief sets animation refresh rate
+    ///
+    ///////////////////////////////////////////////////////////////////////////
+    void setRefreshRate(uint16_t rate);
+
 private:
 
     ::sf::Sprite m_sprite;
     ::sf::Texture m_texture;
     unsigned int m_offset;
     uint8_t m_nmemb;
+    uint8_t m_index;
+    uint16_t m_rate;
 };
 
 
