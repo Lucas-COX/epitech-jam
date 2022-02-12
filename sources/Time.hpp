@@ -71,7 +71,7 @@ public:
     /// \see ::rts::Time::get()
     ///
     ///////////////////////////////////////////////////////////////////////////
-    [[ nodiscard ]] operator Time::Type() const;
+    [[ nodiscard ]] operator Time::Type();
 
     ///////////////////////////////////////////////////////////////////////////
     /// \brief Get the value as it's internally stored.
@@ -150,7 +150,7 @@ public:
     [[ nodiscard ]] auto operator+(
         const ::rts::Time& rhs
     ) const
-        -> ::rts::Time&;
+        -> ::rts::Time;
 
     ///////////////////////////////////////////////////////////////////////////
     /// \brief Convertion to the type internally stored.
@@ -159,7 +159,7 @@ public:
     [[ nodiscard ]] auto operator+(
         const Time::Type& rhs
     ) const
-        -> Time&;
+        -> Time;
 
 
 private:
