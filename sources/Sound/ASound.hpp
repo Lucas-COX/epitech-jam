@@ -53,7 +53,7 @@ class ASound {
         void pause() const;
 
         ///////////////////////////////////////////////////////////////////////////
-        /// \brief sets the sound position
+        /// \brief sets the sound-s position
         ///
         ///////////////////////////////////////////////////////////////////////////
         void setPosition(
@@ -62,13 +62,20 @@ class ASound {
             float z = -1);
 
         ///////////////////////////////////////////////////////////////////////////
-        /// \brief sets the sound volume
+        /// \brief sets the sound's volume
         ///
         ///////////////////////////////////////////////////////////////////////////
         void setVolume(float vol);
 
         ///////////////////////////////////////////////////////////////////////////
-        /// \brief Gets the position.
+        /// \brief Gets the sound's position.
+        ///
+        ///////////////////////////////////////////////////////////////////////////
+        [[nodiscard]] auto getPosition() const
+            -> const ::sf::Vector3f&;
+
+        ///////////////////////////////////////////////////////////////////////////
+        /// \brief Gets the sound's source.
         ///
         ///////////////////////////////////////////////////////////////////////////
         [[nodiscard]] auto getSource() const
@@ -76,9 +83,7 @@ class ASound {
 
     protected:
         bool s_isPlaying;
-        float s_x;
-        float s_y;
-        float s_z;
+        ::sf::Vector3f s_pos;
         ::std::unique_ptr<::sf::SoundSource> s_source;
 };
 }
