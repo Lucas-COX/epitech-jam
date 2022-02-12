@@ -13,7 +13,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::Window::Window()
-    : m_window{ ::sf::VideoMode::getDesktopMode(), "RoadToSuccess" }
+    : m_window{ ::sf::VideoMode::getDesktopMode(), "RoadToSuccess", ::sf::Style::Fullscreen }
 {}
 
 ///////////////////////////////////////////////////////////////////////////
