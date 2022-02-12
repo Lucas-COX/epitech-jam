@@ -32,13 +32,17 @@
 
 ///////////////////////////////////////////////////////////////////////////
 void ::rts::Scene::update()
-{}
+{
+    m_window.handleEvents(*this);
+}
 
 ///////////////////////////////////////////////////////////////////////////
 void ::rts::Scene::draw() const
 {
+    m_window.clear();
     // ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->draw() });
     // ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->draw() });
+    m_window.display();
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -54,8 +58,12 @@ auto ::rts::Scene::handleEvent(
 ) -> bool
 {
     switch (event.type) {
-    case sf::Event::Closed: m_window.close(); return false;
-    default: break;
+    case ::sf::Event::Closed: m_window.close(); return false;
+    case ::sf::Event::KeyPressed:
+        switch (event.key.code) {
+        case sf::Keyboard::Key::Escape: m_window.close(); return false;
+        default: return true;
+        }
+    default: return true;
     }
-    return true;
 }

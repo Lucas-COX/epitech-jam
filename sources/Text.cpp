@@ -31,7 +31,13 @@ auto rts::Text::getText() const
     return m_text;
 }
 
-void rts::Text::loadFont(::std::string filename)
+auto rts::Text::loadFont(
+    ::std::string filename
+) -> ::sf::Font
 {
-    rts::Text::font.loadFromFile("data/hotpizza.ttf");
+    sf::Font font;
+    // font.loadFromFile(filename);
+    return font;
 }
+
+::sf::Font rts::Text::font = ::rts::Text::loadFont(::rts::Text::fontFilepath);

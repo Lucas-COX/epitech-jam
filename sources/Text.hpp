@@ -22,7 +22,12 @@ class Text {
         [[ nodiscard ]] auto getText() const
             -> const sf::Text&;
 
-        static void loadFont(::std::string filename);
+        static auto loadFont(
+            ::std::string filename
+        ) -> sf::Font;
+
+    public:
+        static inline ::std::string fontFilepath{ "data/hotpizza.ttf" };
 
     private:
         static sf::Font font;

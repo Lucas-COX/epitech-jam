@@ -24,4 +24,5 @@ void rts::Menu::update()
 
 bool rts::Menu::run()
 {
+    return true;
 }
