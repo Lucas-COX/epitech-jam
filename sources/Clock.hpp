@@ -1,10 +1,6 @@
 #pragma once
 
-#include <Clock.hpp>
-
-namespace rts { class Window; }
-namespace rts { class AActor; }
-namespace rts { class AUi; }
+#include <Time.hpp>
 
 
 
@@ -12,7 +8,13 @@ namespace rts {
 
 
 
-class Scene {
+class Clock {
+
+public:
+
+    using Type = ::rts::Time;
+
+
 
 public:
 
@@ -27,15 +29,13 @@ public:
     /// \brief Constructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    explicit Scene(
-        ::rts::Window& window
-    );
+    Clock();
 
     ///////////////////////////////////////////////////////////////////////////
     /// \brief Destructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    ~Scene();
+    ~Clock();
 
 
 
@@ -47,38 +47,31 @@ public:
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     ///////////////////////////////////////////////////////////////////////////
-    /// \brief Updates the scene
+    /// \brief Get the elapsed time since the last restart
     ///
-    /// Calls actors updates
-    //
     ///////////////////////////////////////////////////////////////////////////
-    void update();
+    [[ nodiscard ]] auto getElapsed()
+        -> Clock::Type;
 
     ///////////////////////////////////////////////////////////////////////////
-    /// \brief Draws the scene
-    ///
-    /// Calls actors draws
+    /// \brief Get the elapsed time since the last restart, then restarts the
+    /// clock
     ///
     ///////////////////////////////////////////////////////////////////////////
-    void draw() const;
+    [[ nodiscard ]] auto getRestart()
+        -> Clock::Type;
 
     ///////////////////////////////////////////////////////////////////////////
-    /// \brief Is over
-    ///
-    /// If window is closed or should close
+    /// \brief Restarts the clock
     ///
     ///////////////////////////////////////////////////////////////////////////
-    [[ nodiscard ]] auto isOver() const
-        -> bool;
+    void restart();
 
 
 
 private:
 
-    ::rts::Window& window;
-    ::std::vector<::std::shared_ptr<::rts::AActor>> m_actors;
-    ::std::vector<::std::shared_ptr<::rts::AUi>> m_ui;
-    ::rts::Clock m_clock;
+    ::std::chrono::time_point<::std::chrono::high_resolution_clock> m_lastCallTime;
 
 };
 
