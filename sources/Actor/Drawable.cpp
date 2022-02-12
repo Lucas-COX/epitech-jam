@@ -26,6 +26,7 @@
     m_sprite.setTexture(m_texture);
     m_nmemb = nmemb;
     m_rate = rate;
+    m_lastCall = 0.0f;
     if (nmemb > 0) {
         m_offset = computeOffset(filename, nmemb);
         m_sprite.setTextureRect(::sf::IntRect{
@@ -85,8 +86,7 @@ void ::rts::actor::Drawable::update(
     const ::rts::actor::Movable& movable
 )
 {
-    static ::rts::Time lastCall = 0.0f;
-    ::rts::Time elapsed = (deltaTime - lastCall);
+    ::rts::Time elapsed = (deltaTime - m_lastCall);
     // sprite
     m_sprite.setPosition(movable.getPosition());
     // m_sprite.setScale(movable.getScale()); // TODO scane
@@ -100,7 +100,7 @@ void ::rts::actor::Drawable::update(
             static_cast<int>(m_offset),
             static_cast<int>(m_sprite.getLocalBounds().height)
         });
-        lastCall = deltaTime;
+        m_lastCall = deltaTime;
     }
 }
 

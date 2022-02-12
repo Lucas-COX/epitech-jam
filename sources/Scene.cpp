@@ -22,8 +22,8 @@
 {
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("henricletoutpuissant.png", 3));
-    // m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("henricletoutpuissant.png", 3));
-    // m_actors.back()->moveLeft(1100);
+    m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("henricletoutpuissant.png", 3));
+    m_actors.back()->moveLeft(1100);
 }
 
 ///////////////////////////////////////////////////////////////////////////
