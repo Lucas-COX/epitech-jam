@@ -8,7 +8,7 @@ namespace rts::actor {
 
 
 
-class Bar
+class ABar
     : public ::rts::actor::AUi
 {
 
@@ -25,7 +25,7 @@ public:
     /// \brief Constructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    explicit Bar(
+    explicit ABar(
         const ::std::string& filename
     );
 
@@ -33,7 +33,7 @@ public:
     /// \brief Destructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    virtual ~Bar() = 0;
+    virtual ~ABar() = 0;
 
 
 

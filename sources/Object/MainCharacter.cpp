@@ -20,6 +20,7 @@
     this->setRefreshRate(75);
     this->setScale(0.25);
     this->moveDown(100);
+    this->moveRight(1200);
 }
 
 ///////////////////////////////////////////////////////////////////////////
