@@ -8,4 +8,5 @@ rts::sound::Sound::Sound(const ::std::string& filepath)
         throw ::std::runtime_error("Unable to open file");
     }
     static_pointer_cast<sf::Sound>(s_source)->setBuffer(s_buffer);
+    s_source->setVolume(100);
 }

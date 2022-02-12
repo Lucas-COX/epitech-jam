@@ -109,7 +109,6 @@ void ::rts::actor::Drawable::draw(
 ) const
 {
     window.draw(m_sprite);
-    std::cout << m_sprite.getGlobalBounds().width << " " << m_sprite.getGlobalBounds().height << std::endl;
 }
 
 ///////////////////////////////////////////////////////////////////////////

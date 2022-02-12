@@ -4,10 +4,9 @@
 #include <Actor/Drawable.hpp>
 
 
-
 namespace rts::actor {
 
-
+class APickupActor;
 
 class AActor
     : public ::rts::actor::Movable
@@ -52,13 +51,12 @@ public:
     ///
     ///////////////////////////////////////////////////////////////////////////
     [[ nodiscard ]] auto onCollides(
-        ::std::shared_ptr<::rts::actor::AActor> other
+        ::std::shared_ptr<::rts::actor::APickupActor> other
     ) -> bool;
 
 
 
 private:
-
 };
 
 

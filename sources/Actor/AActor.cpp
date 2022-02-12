@@ -1,5 +1,6 @@
 #include <pch.hpp>
 #include <Actor/AActor.hpp>
+#include <Actor/APickupActor.hpp>
 
 
 
@@ -35,8 +36,7 @@
 ///
 ///////////////////////////////////////////////////////////////////////////
 auto ::rts::actor::AActor::onCollides(
-    ::std::shared_ptr<::rts::actor::AActor> other
-) -> bool
+    ::std::shared_ptr<::rts::actor::APickupActor> other) -> bool
 {
     return true;
 }

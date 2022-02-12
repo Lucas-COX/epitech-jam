@@ -9,6 +9,7 @@
 )
     : AActor(filenameSprite, nmemb)
     , APickup(filenameSound, type)
+    , m_lastCall(0)
 {
 }
 
@@ -19,5 +20,10 @@ void ::rts::actor::APickupActor::update(
     const ::rts::actor::Movable &movable
 )
 {
+    ::rts::actor::Drawable::update(deltaTime, movable);
 
+    if (deltaTime - m_lastCall >= 1000) {
+        this->moveDown(100);
+        m_lastCall = deltaTime;
+    }
 }

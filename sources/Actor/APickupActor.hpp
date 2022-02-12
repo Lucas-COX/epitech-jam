@@ -60,7 +60,7 @@ public:
         ) override;
 
 private:
-
+    float m_lastCall;
 };
 
 
