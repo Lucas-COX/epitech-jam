@@ -1,5 +1,5 @@
-#include "pch.hpp"
-#include "ASound.hpp"
+#include <pch.hpp>
+#include <Sound/ASound.hpp>
 
 rts::sound::ASound::ASound(::std::unique_ptr<::sf::SoundSource> source)
     : s_isPlaying(false)
@@ -7,6 +7,8 @@ rts::sound::ASound::ASound(::std::unique_ptr<::sf::SoundSource> source)
     , s_source(std::move(source))
 {
 }
+
+rts::sound::ASound::~ASound() = default;
 
 void rts::sound::ASound::play() const
 {
