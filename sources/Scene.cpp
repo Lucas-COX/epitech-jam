@@ -2,6 +2,8 @@
 #include <Scene.hpp>
 #include <Window.hpp>
 
+#include <Actor/AActor.hpp>
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,8 +42,8 @@ void ::rts::Scene::update()
 void ::rts::Scene::draw() const
 {
     m_window.clear();
-    // ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->draw() });
-    // ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->draw() });
+    ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->draw(); });
+    // ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->draw(); });
     m_window.display();
 }
 
