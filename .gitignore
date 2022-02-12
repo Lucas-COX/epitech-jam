@@ -1,1 +1,15 @@
-.vscode
+.build*
+.obj*
+.dep*
+.vscode*
+*.pdf*
+*.txt*
+*.o
+*.d
+*.hpp.gch
+*.log.*
+#*#
+*~
+binaries*
+
+_*

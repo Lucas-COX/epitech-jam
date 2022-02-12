@@ -7,7 +7,7 @@ int main(int argc, char **argv)
 {
     try {
         ::rts::Window window;
-        ::rts::scene::Game scene{ window };
+        ::rts::Scene scene{ window };
 
         while (!scene.isOver()) {
             scene.update();

@@ -1,6 +1,10 @@
 #pragma once
 
-namespace rts { class AActor };
+#include <Clock.hpp>
+
+namespace rts { class Window; }
+namespace rts { class AActor; }
+namespace rts { class AUi; }
 
 
 
@@ -24,7 +28,7 @@ public:
     ///
     ///////////////////////////////////////////////////////////////////////////
     explicit Scene(
-        ::rts::AWindow& window
+        ::rts::Window& window
     );
 
     ///////////////////////////////////////////////////////////////////////////
@@ -58,11 +62,21 @@ public:
     ///////////////////////////////////////////////////////////////////////////
     void draw() const;
 
+    ///////////////////////////////////////////////////////////////////////////
+    /// \brief Is over
+    ///
+    /// If window is closed or should close
+    ///
+    ///////////////////////////////////////////////////////////////////////////
+    [[ nodiscard ]] auto isOver() const
+        -> bool;
+
 
 
 private:
 
-    ::std::vector<::std::shared_ptr<::rts::AACtor>> m_actors;
+    ::rts::Window& window;
+    ::std::vector<::std::shared_ptr<::rts::AActor>> m_actors;
     ::std::vector<::std::shared_ptr<::rts::AUi>> m_ui;
     ::rts::Clock m_clock;
 

@@ -47,11 +47,6 @@ using ::std::literals::string_view_literals::operator""sv;
 using ::std::chrono_literals::operator""ms;
 
 #include <debugMacros.hpp>
-#include <Tools/File.hpp>
-#include <Tools/Iterator.hpp>
-#include <Tools/String.hpp>
-
-#include <debugMacros.hpp>
 
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
