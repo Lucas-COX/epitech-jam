@@ -2,7 +2,8 @@
 #include <Window.hpp>
 #include <Actor/Drawable.hpp>
 #include <Actor/Movable.hpp>
-
+#include <arpa/inet.h>
+#include <Scene.hpp>
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -14,13 +15,16 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::actor::Drawable::Drawable(
-    const ::std::string& filename
+    const ::std::string& filename,
+    uint8_t nmemb
 )
 {
     if (!m_texture.loadFromFile("./data/sprites/" + filename)) {
         throw ::std::runtime_error{ "texture failed to load" };
     }
     m_sprite.setTexture(m_texture);
+    m_offset = computeOffset(filename, nmemb);
+    m_sprite.setTextureRect(::sf::IntRect{0, 0, m_offset, m_sprite.getLocalBounds().height});
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -71,11 +75,18 @@ void ::rts::actor::Drawable::update(
     const ::rts::actor::Movable& movable
 )
 {
+    static ::rts::Time lastCall = 0.0f;
+    ::rts::Time elapsed = (deltaTime - lastCall) * 100000;
     // sprite
     m_sprite.setPosition(movable.getPosition());
     // m_sprite.setScale(movable.getScale()); // TODO scane
 
-    // animation
+    if (elapsed >= 3) {
+        unsigned int tmp = m_sprite.getTextureRect().left + m_offset;
+        unsigned int left = tmp > m_sprite.getLocalBounds().width ? 0 : tmp;
+        m_sprite.setTextureRect({0, left, m_offset, m_sprite.getLocalBounds().height});
+        lastCall = deltaTime;
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -91,5 +102,20 @@ void ::rts::actor::Drawable::setTextureRect(
     const sf::Rect<int>& rect
 )
 {
+    m_sprite.setTextureRect(rect);
+}
 
+unsigned int ::rts::actor::Drawable::computeOffset(const std::string& filename, const uint8_t nmemb)
+{
+    std::ifstream in("./data/sprites/" + filename);
+    unsigned int width;
+
+    in.seekg(16);
+    in.read((char*)&width, 4);
+
+    if (!in.is_open())
+        throw ::std::runtime_error{ "Could not open " + filename + "." };
+    width = ntohl(width);
+    in.close();
+    return width / nmemb;
 }
