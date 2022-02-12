@@ -76,7 +76,7 @@ public:
     ///  and position
     ///
     ///////////////////////////////////////////////////////////////////////////
-    void update(
+    virtual void update(
         ::rts::Time deltaTime,
         const ::rts::actor::Movable& movable
     );
@@ -85,7 +85,7 @@ public:
     /// \brief Draws the sprite
     ///
     ///////////////////////////////////////////////////////////////////////////
-    void draw(
+    virtual void draw(
         ::rts::Window& window
     ) const;
 
