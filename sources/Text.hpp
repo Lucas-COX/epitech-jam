@@ -8,8 +8,7 @@
 #ifndef TEXT_HPP_
 #define TEXT_HPP_
 
-#include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
+#include <Window.hpp>
 
 namespace rts {
 class Text {
@@ -37,7 +36,7 @@ class Text {
         /// \brief tells if text is hovered or not
         ///
         ///////////////////////////////////////////////////////////////////////////
-        bool getHover(const sf::RenderWindow &window) const;
+        bool getHover(const rts::Window &window) const;
 
         ///////////////////////////////////////////////////////////////////////////
         /// \brief returns text

@@ -10,7 +10,8 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-#include "Text.hpp"
+#include <Window.hpp>
+#include <Text.hpp>
 
 namespace rts {
     class Menu
@@ -27,7 +28,7 @@ namespace rts {
         /// \brief Constructor
         ///
         ///////////////////////////////////////////////////////////////////////////
-        Menu(sf::RenderWindow& window);
+        Menu(::rts::Window & window);
 
         ///////////////////////////////////////////////////////////////////////////
         /// \brief Destructor
@@ -55,9 +56,9 @@ namespace rts {
         bool run();
 
     private:
-        sf::RenderWindow &m_window;
-        sf::Texture m_background_T;
-        sf::Sprite m_background;
+        ::rts::Window &m_window;
+        ::sf::Texture m_background_T;
+        ::sf::Sprite m_background;
         ::std::vector<Text> m_texts;
     };
 }

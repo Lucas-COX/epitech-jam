@@ -1,5 +1,6 @@
 #include <pch.hpp>
 #include <Text.hpp>
+#include <Window.hpp>
 
 rts::Text::Text(std::string str, unsigned int size, sf::Color color)
 {
@@ -14,7 +15,7 @@ rts::Text::~Text()
 {
 }
 
-bool rts::Text::getHover(const sf::RenderWindow &window) const
+bool rts::Text::getHover(const rts::Window &window) const
 {
     return false;
 }

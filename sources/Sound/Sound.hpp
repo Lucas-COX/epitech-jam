@@ -21,5 +21,6 @@ class Sound : public ASound {
 
 private:
     ::sf::SoundBuffer s_buffer;
+    Sound(::std::unique_ptr<::sf::SoundSource> source);
 };
 };
