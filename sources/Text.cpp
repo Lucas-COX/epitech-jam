@@ -1,11 +1,5 @@
-/*
-** EPITECH PROJECT, 2022
-** Visual Studio Live Share (Workspace)
-** File description:
-** Text
-*/
-
-#include "Text.hpp"
+#include <pch.hpp>
+#include <Text.hpp>
 
 rts::Text::Text(std::string str, unsigned int size, sf::Color color)
 {
@@ -36,7 +30,9 @@ auto rts::Text::loadFont(
 ) -> ::sf::Font
 {
     sf::Font font;
-    // font.loadFromFile(filename);
+    if (font.loadFromFile(filename)) {
+        throw ::std::runtime_error("Impossible to load the file: "s + filename);
+    }
     return font;
 }
 
