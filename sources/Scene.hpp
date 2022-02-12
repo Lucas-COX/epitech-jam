@@ -71,6 +71,14 @@ public:
     [[ nodiscard ]] auto isOver() const
         -> bool;
 
+    ///////////////////////////////////////////////////////////////////////////
+    /// \brief Handles each events given by window
+    ///
+    ///////////////////////////////////////////////////////////////////////////
+    void handleEvent(
+        sf::Event& event
+    );
+
 
 
 private:

@@ -7,9 +7,13 @@ int main(int argc, char **argv)
 {
     try {
         ::rts::Window window;
+
+        if (::rts::menu{ window }.run()) {
+            return EXIT_SUCCESS;
+        }
         ::rts::Scene scene{ window };
 
-        while (!scene.isOver()) {
+        while (scene.isOpen()) {
             scene.update();
             scene.draw();
         }

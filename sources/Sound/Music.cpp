@@ -1,5 +1,5 @@
-#include "pch.hpp"
-#include "Music.hpp"
+#include <pch.hpp>
+#include <Sound/Music.hpp>
 
 rts::sound::Music::Music(::std::unique_ptr<::sf::SoundSource> source, bool loop)
     : ASound(::std::move(source))
