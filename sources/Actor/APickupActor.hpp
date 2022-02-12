@@ -1,7 +1,8 @@
 #pragma once
 
 #include <Actor/AActor.hpp>
-#include <Actor/Pickup.hpp>
+#include <Actor/APickup.hpp>
+#include <string>
 
 
 
@@ -11,7 +12,7 @@ namespace rts::actor {
 
 class APickupActor
     : public ::rts::actor::AActor
-    , public ::rts::actor::PickUp
+    , public ::rts::actor::APickup
 {
 
 public:
@@ -30,7 +31,8 @@ public:
     explicit APickupActor(
         const ::std::string& filenameSprite,
         const ::std::string& filenameSound,
-        ::std::uint8_t nmemb
+        ::rts::actor::APickup::Type type,
+        ::std::uint8_t value
     );
 
     ///////////////////////////////////////////////////////////////////////////
@@ -47,14 +49,6 @@ public:
     //
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    ///////////////////////////////////////////////////////////////////////////
-    /// \brief Moves the actor
-    ///
-    ///////////////////////////////////////////////////////////////////////////
-    virtual void playSound() = 0;
-
-
 
 private:
 

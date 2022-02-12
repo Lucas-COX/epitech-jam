@@ -146,3 +146,14 @@ auto ::rts::actor::Drawable::getSprite()
 {
     return m_sprite;
 }
+
+auto ::rts::actor::Drawable::getRotation() const
+    -> float
+{
+    return m_sprite.getRotation();
+}
+
+void ::rts::actor::Drawable::setRotation(float angle)
+{
+    m_sprite.setRotation(angle);
+}
