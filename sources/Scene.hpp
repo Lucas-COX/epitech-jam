@@ -75,18 +75,19 @@ public:
     /// \brief Handles each events given by window
     ///
     ///////////////////////////////////////////////////////////////////////////
-    void handleEvent(
+    auto handleEvent(
         sf::Event& event
-    );
+    ) -> bool;
 
 
 
 private:
 
-    ::rts::Window& window;
+    ::rts::Window& m_window;
     ::std::vector<::std::shared_ptr<::rts::AActor>> m_actors;
     ::std::vector<::std::shared_ptr<::rts::AUi>> m_ui;
     ::rts::Clock m_clock;
+    bool m_isOver{ false };
 
 };
 

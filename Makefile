@@ -40,13 +40,13 @@ PCHEXT			:=	.gch
 
 ## wflags
 COMMON_WFLAGS	:=	pedantic all extra
-C_WFLAGS		:=	
+C_WFLAGS		:=
 CPP_WFLAGS		:=	no-unused-variable no-unused-parameter
 CPPM_WFLAGS		:=
 
 ## flags
 COMMON_FLAGS	:=	-fmax-errors=10
-C_FLAGS			:=	
+C_FLAGS			:=
 CPP_FLAGS		:=	-std=c++20
 CPPM_FLAGS		:=	-std=c++20
 PCH_FLAGS		:=	-std=c++20
@@ -61,7 +61,6 @@ LIBLOCATION		:=
 
 ## -l
 LIBBIN			:=	sfml-graphics sfml-window sfml-system sfml-audio
-
 
 
 # ============================================================================= Mode debug

@@ -16,15 +16,12 @@ class Music : public ASound {
     /// \brief Constructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    Music(::std::unique_ptr<::sf::SoundSource> source, bool loop = true);
-
-    ///////////////////////////////////////////////////////////////////////////
-    /// \brief sets the music loop
-    ///
-    ///////////////////////////////////////////////////////////////////////////
-    void setLoop(bool loop);
+    Music(const ::std::string &filepath, bool loop = true);
 
     private:
         bool s_isLoop;
+        using ASound::s_source;
+        static ::std::unique_ptr<sf::Music> createMusic(::std::string filepath, bool isLoop);
 };
-};
+
+} // namespace rts::Sound

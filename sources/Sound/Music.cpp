@@ -1,15 +1,18 @@
 #include <pch.hpp>
 #include <Sound/Music.hpp>
 
-rts::sound::Music::Music(::std::unique_ptr<::sf::SoundSource> source, bool loop)
-    : ASound(::std::move(source))
+rts::sound::Music::Music(const ::std::string &filepath, bool loop)
+    : ASound(createMusic(filepath, loop))
     , s_isLoop(loop)
 {
-    static_cast<::sf::Music*>(s_source.get())->setLoop(loop);
 }
 
-void rts::sound::Music::Music::setLoop(bool loop)
+::std::unique_ptr<sf::Music> rts::sound::Music::createMusic(::std::string filepath, bool isLoop)
 {
-    s_isLoop = loop;
-    static_cast<::sf::Music*>(s_source.get())->setLoop(loop);
+    auto music = std::make_unique<sf::Music>();
+    if (!music->openFromFile(filepath)) {
+        throw ::std::runtime_error("Unable to open file");
+    }
+    music->setLoop(isLoop);
+    return music;
 }
