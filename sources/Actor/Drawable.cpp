@@ -89,7 +89,6 @@ void ::rts::actor::Drawable::update(
     ::rts::Time elapsed = (deltaTime - m_lastCall);
     // sprite
     m_sprite.setPosition(movable.getPosition());
-    // m_sprite.setScale(movable.getScale()); // TODO scane
 
     if (elapsed >= m_rate && m_nmemb > 1) {
         unsigned int tmp = m_sprite.getTextureRect().left + m_offset;
@@ -138,6 +137,12 @@ unsigned int ::rts::actor::Drawable::computeOffset(const std::string& filename, 
 void ::rts::actor::Drawable::setRefreshRate(uint16_t rate)
 {
     m_rate = rate;
+}
+
+auto ::rts::actor::Drawable::getScale() const
+    -> float
+{
+    return m_sprite.getScale().x;
 }
 
 void ::rts::actor::Drawable::setScale(float scale)
