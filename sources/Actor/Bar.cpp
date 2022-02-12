@@ -1,6 +1,5 @@
-#if false
 #include <pch.hpp>
-#include <Object/Pickup/Food.hpp>
+#include <Actor/Bar.hpp>
 
 
 
@@ -12,12 +11,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
-::rts::object::Food::Food(
+::rts::actor::Bar::Bar(
     const ::std::string& filename
 )
-    : ::rts::actor::APickupActor{ filename }
+    : ::rts::actor::AUi{ filename }
 {}
 
 ///////////////////////////////////////////////////////////////////////////
-::rts::object::Food::~Food() = default;
-#endif
+::rts::actor::Bar::~Bar() = default;

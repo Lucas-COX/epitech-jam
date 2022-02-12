@@ -1,15 +1,15 @@
 #pragma once
 
-#include <Actor/APickupActor.hpp>
+#include <Actor/AUi.hpp>
 
 
 
-namespace rts::object {
+namespace rts::actor {
 
 
 
-class Food
-    : public ::rts::actor::APickupActor
+class Bar
+    : public ::rts::actor::AUi
 {
 
 public:
@@ -25,7 +25,7 @@ public:
     /// \brief Constructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    explicit Food(
+    explicit Bar(
         const ::std::string& filename
     );
 
@@ -33,7 +33,7 @@ public:
     /// \brief Destructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    ~Food();
+    virtual ~Bar() = 0;
 
 
 
@@ -43,4 +43,4 @@ private:
 
 
 
-} // namespace rts::object
+} // namespace rts::actor
