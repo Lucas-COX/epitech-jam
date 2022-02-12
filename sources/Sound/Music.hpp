@@ -21,7 +21,7 @@ class Music : public ASound {
     private:
         bool s_isLoop;
         using ASound::s_source;
-        static ::std::unique_ptr<sf::Music> createMusic(::std::string filepath, bool isLoop);
+        static ::std::shared_ptr<sf::Music> createMusic(::std::string filepath, bool isLoop);
 };
 
 } // namespace rts::Sound

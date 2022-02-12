@@ -1,4 +1,3 @@
-#if false
 #include <pch.hpp>
 #include <Object/Pickup/Food.hpp>
 
@@ -12,12 +11,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
-::rts::object::Food::Food(
-    const ::std::string& filename
-)
-    : ::rts::actor::APickupActor{ filename }
+::rts::object::pickup::Food::Food()
+    : ::rts::actor::APickupActor{ "bigburger.png", "bling.wav", rts::actor::APickup::fChanger }
 {}
 
 ///////////////////////////////////////////////////////////////////////////
-::rts::object::Food::~Food() = default;
-#endif
+::rts::object::pickup::Food::~Food() = default;

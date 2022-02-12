@@ -20,7 +20,6 @@ class Sound : public ASound {
     Sound(const ::std::string &filepath);
 
     private:
-        ::std::unique_ptr<sf::Sound> createSound(::std::string filepath);
-        sf::SoundBuffer s_buffer;
+        ::sf::SoundBuffer s_buffer;
 };
 };

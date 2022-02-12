@@ -1,7 +1,7 @@
 #include <pch.hpp>
 #include <Sound/ASound.hpp>
 
-rts::sound::ASound::ASound(::std::unique_ptr<::sf::SoundSource> source)
+rts::sound::ASound::ASound(::std::shared_ptr<::sf::SoundSource> source)
     : s_isPlaying(false)
     , s_pos(0, 0, 0)
     , s_source(std::move(source))
@@ -42,7 +42,7 @@ auto rts::sound::ASound::getPosition() const
 }
 
 auto rts::sound::ASound::getSource() const
-    -> const ::std::unique_ptr<::sf::SoundSource>&
+    -> const ::std::shared_ptr<::sf::SoundSource>&
 {
     return s_source;
 }

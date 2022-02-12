@@ -1,17 +1,11 @@
 #include <pch.hpp>
 #include <Sound/Sound.hpp>
 
-rts::sound::Sound::Sound(const ::std::string &filepath)
-    : ASound(createSound(filepath))
+rts::sound::Sound::Sound(const ::std::string& filepath)
+    : ASound(std::make_shared<sf::Sound>())
 {
-}
-
-::std::unique_ptr<sf::Sound> rts::sound::Sound::createSound(::std::string filepath)
-{
-    if (!s_buffer.loadFromFile(filepath)) {
+    if (!s_buffer.loadFromFile("./data/sounds/" + filepath)) {
         throw ::std::runtime_error("Unable to open file");
     }
-    auto sound = std::make_unique<sf::Sound>();
-    sound->setBuffer(s_buffer);
-    return sound;
+    static_pointer_cast<sf::Sound>(s_source)->setBuffer(s_buffer);
 }

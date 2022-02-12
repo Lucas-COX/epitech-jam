@@ -19,7 +19,7 @@ class ASound {
         /// \brief Constructor
         ///
         ///////////////////////////////////////////////////////////////////////////
-        explicit ASound(::std::unique_ptr<::sf::SoundSource> source);
+        explicit ASound(::std::shared_ptr<::sf::SoundSource> source);
 
         ///////////////////////////////////////////////////////////////////////////
         /// \brief Destructor
@@ -79,7 +79,7 @@ class ASound {
         ///
         ///////////////////////////////////////////////////////////////////////////
         [[nodiscard]] auto getSource() const
-            -> const ::std::unique_ptr<sf::SoundSource>&;
+            -> const ::std::shared_ptr<sf::SoundSource>&;
 
     protected:
         ///////////////////////////////////////////////////////////////////////////
@@ -98,6 +98,6 @@ class ASound {
         /// \brief sound's source (sf::Sound or sf::Music)
         ///
         ///////////////////////////////////////////////////////////////////////////
-        ::std::unique_ptr<::sf::SoundSource> s_source;
+        ::std::shared_ptr<::sf::SoundSource> s_source;
 };
 }

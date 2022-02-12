@@ -7,9 +7,9 @@ rts::sound::Music::Music(const ::std::string &filepath, bool loop)
 {
 }
 
-::std::unique_ptr<sf::Music> rts::sound::Music::createMusic(::std::string filepath, bool isLoop)
+::std::shared_ptr<sf::Music> rts::sound::Music::createMusic(::std::string filepath, bool isLoop)
 {
-    auto music = std::make_unique<sf::Music>();
+    auto music = std::make_shared<sf::Music>();
     if (!music->openFromFile(filepath)) {
         throw ::std::runtime_error("Unable to open file");
     }
