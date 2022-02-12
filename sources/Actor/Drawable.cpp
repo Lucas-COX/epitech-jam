@@ -28,7 +28,7 @@
     m_rate = rate;
     m_lastCall = 0.0f;
     if (nmemb > 0) {
-        m_offset = computeOffset(filename, nmemb);
+        m_offset = this->computeOffset(filename, nmemb);
         m_sprite.setTextureRect(::sf::IntRect{
                 0,
                 0,
@@ -121,16 +121,7 @@ void ::rts::actor::Drawable::setTextureRect(
 
 unsigned int ::rts::actor::Drawable::computeOffset(const std::string& filename, const uint8_t nmemb)
 {
-    std::ifstream in("./data/sprites/" + filename);
-    unsigned int width;
-
-    in.seekg(16);
-    in.read((char*)&width, 4);
-
-    if (!in.is_open())
-        throw ::std::runtime_error{ "Could not open " + filename + "." };
-    width = ntohl(width);
-    in.close();
+    auto width{ m_sprite.getLocalBounds().width };
     return nmemb == 0 ? width : width / nmemb;
 }
 
@@ -148,4 +139,10 @@ auto ::rts::actor::Drawable::getScale() const
 void ::rts::actor::Drawable::setScale(float scale)
 {
     m_sprite.setScale(scale, scale);
+}
+
+auto ::rts::actor::Drawable::getSprite()
+    -> ::sf::Sprite&
+{
+    return m_sprite;
 }

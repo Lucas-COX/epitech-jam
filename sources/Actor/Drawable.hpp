@@ -103,7 +103,7 @@ public:
     /// \brief computes animation offset depending of file size
     ///
     ///////////////////////////////////////////////////////////////////////////
-    static unsigned int computeOffset(const std::string &filename, uint8_t nmemb);
+    unsigned int computeOffset(const std::string &filename, uint8_t nmemb);
 
     ///////////////////////////////////////////////////////////////////////////
     /// \brief sets animation refresh rate
@@ -124,14 +124,21 @@ public:
     ///////////////////////////////////////////////////////////////////////////
     void setScale(float scale);
 
+    ///////////////////////////////////////////////////////////////////////////
+    /// \brief sets image scale
+    ///
+    ///////////////////////////////////////////////////////////////////////////
+    [[ nodiscard ]] auto getSprite()
+        -> ::sf::Sprite&;
+
 private:
 
     ::sf::Sprite m_sprite;
     ::sf::Texture m_texture;
     unsigned int m_offset;
-    uint8_t m_nmemb;
-    uint8_t m_index;
-    uint16_t m_rate;
+    ::std::uint8_t m_nmemb;
+    ::std::uint8_t m_index;
+    ::std::uint16_t m_rate;
     float m_lastCall;
 };
 

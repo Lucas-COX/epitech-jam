@@ -12,10 +12,15 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::actor::ABar::ABar(
-    const ::std::string& filename
+    const ::std::string& filenameOutside,
+    const ::std::string& filenameInside,
+    ::std::uint8_t basePercentage
 )
-    : ::rts::actor::AUi{ filename }
-{}
+    : ::rts::actor::AUi{ filenameOutside }
+    , m_insideBar{ filenameInside }
+{
+    this->changeValue(basePercentage);
+}
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::actor::ABar::~ABar() = default;
@@ -36,4 +41,33 @@ void ::rts::actor::ABar::update(
 )
 {
     ::rts::actor::Drawable::update(deltaTime, movable);
+
+    auto& sprite{ m_insideBar.getSprite() };
+    sprite.setPosition(this->getPosition());
+    sprite.setScale(this->getScale(), this->getScale());
+}
+
+///////////////////////////////////////////////////////////////////////////
+void ::rts::actor::ABar::draw(
+    ::rts::Window& window
+) const
+{
+    m_insideBar.draw(window);
+    ::rts::actor::Drawable::draw(window);
+}
+
+///////////////////////////////////////////////////////////////////////////
+void ::rts::actor::ABar::changeValue(
+    ::std::uint8_t newValue
+)
+{
+    m_fillPercentage = newValue;
+    auto& sprite{ m_insideBar.getSprite() };
+    auto size{ sprite.getTexture()->getSize() };
+    sprite.setTextureRect({
+        0,
+        0,
+        static_cast<int>(size.x * (m_fillPercentage / 100.0f)),
+        static_cast<int>(size.y),
+    });
 }

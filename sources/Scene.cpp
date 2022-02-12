@@ -4,6 +4,7 @@
 #include <Actor/AActor.hpp>
 #include <Object/Background.hpp>
 #include <Object/MainCharacter.hpp>
+#include <Object/Bar/Evolution.hpp>
 
 
 
@@ -21,6 +22,7 @@
     : m_window(window)
 {
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
+    m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
     m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("henricletoutpuissant.png", 3));
     m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("henricletoutpuissant.png", 3));
     m_actors.back()->moveLeft(1100);
@@ -43,6 +45,7 @@ void ::rts::Scene::update()
 {
     m_window.handleEvents(*this);
     ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->update(m_clock.getElapsed(), *actor); });
+    ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->update(m_clock.getElapsed(), *actor); });
     // for (auto& actor : m_actors) {
         // actor->update(m_clock.getElapsed(), *actor);
     // }

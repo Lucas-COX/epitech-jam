@@ -26,7 +26,9 @@ public:
     ///
     ///////////////////////////////////////////////////////////////////////////
     explicit ABar(
-        const ::std::string& filename
+        const ::std::string& filenameOutside,
+        const ::std::string& filenameInside,
+        ::std::uint8_t basePercentage
     );
 
     ///////////////////////////////////////////////////////////////////////////
@@ -53,11 +55,28 @@ public:
         const ::rts::actor::Movable& movable
     ) override;
 
+    ///////////////////////////////////////////////////////////////////////////
+    /// \brief Constructor
+    ///
+    ///////////////////////////////////////////////////////////////////////////
+    void draw(
+        ::rts::Window& window
+    ) const override;
+
+    ///////////////////////////////////////////////////////////////////////////
+    /// \brief Constructor
+    ///
+    ///////////////////////////////////////////////////////////////////////////
+    void changeValue(
+        ::std::uint8_t newValue
+    );
+
 
 
 private:
 
-    ::std::uint8_t value; // value as percentage
+    ::std::uint8_t m_fillPercentage; // value as percentage
+    ::rts::actor::Drawable m_insideBar;
 
 };
 

@@ -1,17 +1,15 @@
 #pragma once
 
-#include <Actor/Drawable.hpp>
-#include <Actor/Movable.hpp>
+#include <Actor/ABar.hpp>
 
 
 
-namespace rts::actor {
+namespace rts::object::bar {
 
 
 
-class AUi
-    : public ::rts::actor::Drawable
-    , public ::rts::actor::Movable
+class Evolution
+    : public ::rts::actor::ABar
 {
 
 public:
@@ -27,15 +25,14 @@ public:
     /// \brief Constructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    explicit AUi(
-        const ::std::string& filename
-    );
+    explicit Evolution();
 
     ///////////////////////////////////////////////////////////////////////////
     /// \brief Destructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    virtual ~AUi() = 0;
+    ~Evolution();
+
 
 
 private:
@@ -44,4 +41,4 @@ private:
 
 
 
-} // namespace rts::actor
+} // namespace rts::object::bar
