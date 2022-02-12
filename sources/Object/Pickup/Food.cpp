@@ -1,3 +1,4 @@
+#if false
 #include <pch.hpp>
 #include <Object/Background.hpp>
 
@@ -19,3 +20,4 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::Background::~Background() = default;
+#endif

@@ -21,7 +21,7 @@
     : m_window(window)
 {
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
-    m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("main.png", 4));
+    m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("henricletoutpuissant.png", 3));
 }
 
 ///////////////////////////////////////////////////////////////////////////

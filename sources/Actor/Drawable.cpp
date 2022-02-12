@@ -139,3 +139,8 @@ void ::rts::actor::Drawable::setRefreshRate(uint16_t rate)
 {
     m_rate = rate;
 }
+
+void ::rts::actor::Drawable::setScale(float scale)
+{
+    m_sprite.setScale(scale, scale);
+}

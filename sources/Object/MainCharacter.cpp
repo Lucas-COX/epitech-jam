@@ -16,7 +16,11 @@
     uint8_t nmemb
 )
     : ::rts::actor::AActor{ filename, nmemb }
-{}
+{
+    this->setRefreshRate(75);
+    this->setScale(0.25);
+    this->moveDown(100);
+}
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::MainCharacter::~MainCharacter() = default;
