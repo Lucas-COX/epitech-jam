@@ -5,6 +5,7 @@
 namespace rts::sound {
 
 class Sound : public ASound {
+    public:
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // *structors
@@ -16,6 +17,10 @@ class Sound : public ASound {
     /// \brief Constructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    Sound(::std::unique_ptr<::sf::SoundSource> source);
+    Sound(const ::std::string &filepath);
+
+    private:
+        ::std::unique_ptr<sf::Sound> createSound(::std::string filepath);
+        sf::SoundBuffer s_buffer;
 };
 };
