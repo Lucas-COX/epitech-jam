@@ -27,7 +27,8 @@ public:
     ///
     ///////////////////////////////////////////////////////////////////////////
     explicit Drawable(
-        const ::std::string& filename
+        const ::std::string& filename,
+        uint8_t nmemb = 0
     );
 
     ///////////////////////////////////////////////////////////////////////////
@@ -97,14 +98,17 @@ public:
         const sf::Rect<int>& rect
     );
 
-
-
+    ///////////////////////////////////////////////////////////////////////////
+    /// \brief computes animation offset depending of file size
+    ///
+    ///////////////////////////////////////////////////////////////////////////
+    static unsigned int computeOffset(const std::string &filename, uint8_t nmemb);
 
 private:
 
     ::sf::Sprite m_sprite;
     ::sf::Texture m_texture;
-
+    unsigned int m_offset;
 };
 
 
