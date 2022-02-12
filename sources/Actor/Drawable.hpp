@@ -109,6 +109,7 @@ private:
     ::sf::Sprite m_sprite;
     ::sf::Texture m_texture;
     unsigned int m_offset;
+    uint8_t m_nmemb;
 };
 
 

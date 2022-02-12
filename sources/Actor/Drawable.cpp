@@ -23,8 +23,16 @@
         throw ::std::runtime_error{ "texture failed to load" };
     }
     m_sprite.setTexture(m_texture);
-    m_offset = computeOffset(filename, nmemb);
-    m_sprite.setTextureRect(::sf::IntRect{0, 0, m_offset, m_sprite.getLocalBounds().height});
+    m_nmemb = nmemb;
+    if (nmemb > 0) {
+        m_offset = computeOffset(filename, nmemb);
+        m_sprite.setTextureRect(::sf::IntRect{
+                0,
+                0,
+                static_cast<int>(m_offset),
+                static_cast<int>(m_sprite.getLocalBounds().height)
+            });
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -76,15 +84,20 @@ void ::rts::actor::Drawable::update(
 )
 {
     static ::rts::Time lastCall = 0.0f;
-    ::rts::Time elapsed = (deltaTime - lastCall) * 100000;
+    ::rts::Time elapsed = (deltaTime - lastCall) * 100;
     // sprite
     m_sprite.setPosition(movable.getPosition());
     // m_sprite.setScale(movable.getScale()); // TODO scane
 
-    if (elapsed >= 3) {
+    if (elapsed >= 3 && m_nmemb > 1) {
         unsigned int tmp = m_sprite.getTextureRect().left + m_offset;
-        unsigned int left = tmp > m_sprite.getLocalBounds().width ? 0 : tmp;
-        m_sprite.setTextureRect({0, left, m_offset, m_sprite.getLocalBounds().height});
+        unsigned int left = tmp > m_texture.getSize().x ? 0 : tmp;
+        m_sprite.setTextureRect({
+            0,
+            static_cast<int>(left),
+            static_cast<int>(m_offset),
+            static_cast<int>(m_sprite.getLocalBounds().height)
+        });
         lastCall = deltaTime;
     }
 }
@@ -117,5 +130,5 @@ unsigned int ::rts::actor::Drawable::computeOffset(const std::string& filename, 
         throw ::std::runtime_error{ "Could not open " + filename + "." };
     width = ntohl(width);
     in.close();
-    return width / nmemb;
+    return nmemb == 0 ? width : width / nmemb;
 }
