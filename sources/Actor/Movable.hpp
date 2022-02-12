@@ -1,6 +1,6 @@
 #pragma once
 
-namespace rts {
+namespace rts::actor {
 
 
 
@@ -207,11 +207,11 @@ public:
 private:
 
     ::sf::Vector2<float> m_position{ 0.0f, 0.0f };
-    static float globalSpeed{ 100 }
-    float m_localSpeed{ 100 }
+    static inline float globalSpeed{ 100 };
+    float m_localSpeed{ 100 };
 
 };
 
 
 
-} // namespace rts
+} // namespace rts::actor
