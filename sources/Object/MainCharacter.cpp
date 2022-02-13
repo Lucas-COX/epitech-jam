@@ -40,7 +40,7 @@ void ::rts::object::MainCharacter::goToLeftSideRoad()
 {
     if (pos != 0) {
         pos--;
-        this->moveLeft(300);
+        this->moveLeft(400);
     }
 }
 
@@ -52,6 +52,6 @@ void ::rts::object::MainCharacter::goToRightSideRoad()
 {
     if (pos != 2) {
         pos++;
-        this->moveRight(300);
+        this->moveRight(400);
     }
 }
