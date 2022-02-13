@@ -43,7 +43,7 @@ void ::rts::actor::APickupActor::update(
     if (deltaTime - m_lastCall >= 10) {
         this->moveDown(3);
         if (m_lane == 0) {
-            this->moveLeft(0.5);
+            this->moveLeft(0.65);
         } else if (m_lane == 1) {
             this->moveLeft(0.025);
         } else if (m_lane == 2) {
