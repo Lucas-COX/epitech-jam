@@ -53,7 +53,6 @@ rts::Menu::triState rts::Menu::handleEvent()
     sf::Event event;
     while (m_window.getWindow().pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
-            printf("menu.window closed\n");
             m_window.close();
         }
 

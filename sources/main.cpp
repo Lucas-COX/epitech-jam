@@ -2,6 +2,7 @@
 #include <Scene.hpp>
 #include <Window.hpp>
 #include <Menu/Menu.hpp>
+#include <Victory.hpp>
 
 
 int main(int argc, char **argv)
@@ -10,6 +11,10 @@ int main(int argc, char **argv)
         ::rts::Window window;
 
         if (!::rts::Menu{ window }.run()) {
+            return EXIT_SUCCESS;
+        }
+
+        if (::rts::Victory{window}.run()) {
             return EXIT_SUCCESS;
         }
 
@@ -31,6 +36,5 @@ int main(int argc, char **argv)
     } catch (...) {
         ::std::cerr << "ERROR: unknown" <<::std::endl;
         return EXIT_FAILURE;
-
     }
 }
