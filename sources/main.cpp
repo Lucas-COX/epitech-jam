@@ -10,20 +10,8 @@ int main(int argc, char **argv)
     try {
         ::rts::Window window;
 
-        if (!::rts::Menu{ window }.run()) {
-            return EXIT_SUCCESS;
-        }
-
-        if (::rts::Victory{window}.run()) {
-            return EXIT_SUCCESS;
-        }
-
-        ::rts::Scene scene { window };
-
-        while (!scene.isOver()) {
-            if (!scene.update()) {
-                break;
-            } else if (scene.hasWon()) {
+        while (true) {
+            if (!::rts::Menu{ window }.run()) {
                 break;
             }
 
