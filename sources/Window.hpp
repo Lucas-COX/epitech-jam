@@ -87,7 +87,10 @@ public:
         return m_window.getSize();
     };
 
-    [[ nodiscard ]] const sf::RenderWindow &getWindow() const;
+    [[nodiscard]] const sf::RenderWindow& getWindow() const;
+    [[nodiscard]] sf::RenderWindow& getWindow() {
+        return m_window;
+    }
 
 private:
 

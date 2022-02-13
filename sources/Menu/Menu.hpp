@@ -59,7 +59,17 @@ namespace rts {
         ::rts::Window &m_window;
         ::sf::Texture m_background_T;
         ::sf::Sprite m_background;
+        ::sf::Texture m_oogway_T;
+        ::sf::Sprite m_oogway;
         ::std::vector<Text> m_texts;
+
+        enum triState {
+            UNDIFINED = -1,
+            FALSE,
+            TRUE
+        };
+
+        triState handleEvent();
     };
 }
 

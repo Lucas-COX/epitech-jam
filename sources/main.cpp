@@ -9,10 +9,11 @@ int main(int argc, char **argv)
     try {
         ::rts::Window window;
 
-        if (::rts::Menu{ window }.run()) {
+        if (!::rts::Menu{ window }.run()) {
             return EXIT_SUCCESS;
         }
-        ::rts::Scene scene{ window };
+
+        ::rts::Scene scene { window };
 
         while (!scene.isOver()) {
             if (!scene.update()) {

@@ -55,9 +55,11 @@ class Text {
 
         void center(int wSize, int pos);
 
-        void update(const rts::Window& window) const;
+        void update(const rts::Window& window);
 
-        bool hittext(const sf::RenderWindow& window, sf::Text& text);
+        void draw(::rts::Window& window) const;
+
+        bool hittext(const rts::Window& window);
 
         public : static inline ::std::string fontFilepath { "./data/hotpizza.ttf" };
 
