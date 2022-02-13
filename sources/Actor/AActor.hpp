@@ -50,8 +50,8 @@ public:
     /// \brief Draws the actor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    [[ nodiscard ]] auto onCollides(
-        ::std::shared_ptr<::rts::actor::APickupActor> other
+    [[ nodiscard ]] auto doesCollide(
+        ::std::shared_ptr<::rts::actor::AActor> other
     ) -> bool;
 
 

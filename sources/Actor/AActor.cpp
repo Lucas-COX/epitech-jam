@@ -35,8 +35,9 @@
 /// \brief Draws the actor
 ///
 ///////////////////////////////////////////////////////////////////////////
-auto ::rts::actor::AActor::onCollides(
-    ::std::shared_ptr<::rts::actor::APickupActor> other) -> bool
+auto ::rts::actor::AActor::doesCollide(
+    ::std::shared_ptr<::rts::actor::AActor> other
+) -> bool
 {
     return true;
 }
