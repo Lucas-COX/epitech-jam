@@ -83,8 +83,7 @@ public:
         -> float;
 
 
-
-private:
+protected:
 
     float m_fillPercentage; // value as percentage
     ::rts::actor::Drawable m_insideBar;
