@@ -22,6 +22,7 @@
     ::rts::Window& window
 )
     : m_window(window)
+    , m_music("music.wav")
 {
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
@@ -30,6 +31,7 @@
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(1));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(2));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Book>(0));
+    m_music.play();
 }
 
 ///////////////////////////////////////////////////////////////////////////

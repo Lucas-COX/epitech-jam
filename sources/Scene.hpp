@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Clock.hpp>
+#include <Sound/Music.hpp>
 #include <Actor/APickup.hpp>
 
 namespace rts { class Window; }
@@ -86,6 +87,7 @@ private:
     ::std::vector<::std::shared_ptr<::rts::actor::AActor>> m_actors;
     ::std::vector<::std::shared_ptr<::rts::actor::AUi>> m_uis;
     ::rts::Clock m_clock;
+    ::rts::sound::Music m_music;
     bool m_isOver{ false };
 
 };
