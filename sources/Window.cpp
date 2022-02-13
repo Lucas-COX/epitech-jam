@@ -66,3 +66,8 @@ void ::rts::Window::handleEvents(
         }
     }
 }
+
+const sf::RenderWindow& ::rts::Window::getWindow() const
+{
+    return m_window;
+}
