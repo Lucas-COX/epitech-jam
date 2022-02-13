@@ -12,7 +12,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::bar::Energy::Energy()
-    : ::rts::actor::ABar{ "emptyBar.png", "energyBar.png", 30 }
+    : ::rts::actor::ABar{ "emptyBar.png", "energyBar.png", 25 }
 {
     this->setScale(0.25);
     this->moveRight(125);
