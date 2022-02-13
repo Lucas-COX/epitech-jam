@@ -12,7 +12,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::pickup::Food::Food(uint8_t lane)
-    : ::rts::actor::APickupActor{ "bigburger.png", "bling.wav", rts::actor::APickup::fChanger, 1, lane }
+    : ::rts::actor::APickupActor{ "bigburger.png", "burgerman.wav", rts::actor::APickup::fChanger, 1, lane }
 {}
 
 ///////////////////////////////////////////////////////////////////////////

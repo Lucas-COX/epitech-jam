@@ -52,7 +52,7 @@ void ::rts::Scene::update()
     for (auto& actor : m_actors | std::views::drop(1)) {
         if (m_actors[0]->doesCollide(actor)) {
             auto pickupActor{ static_pointer_cast<::rts::actor::APickupActor>(actor) };
-            pickupActor->playSound();
+            ::rts::actor::APickup::playSound(pickupActor);
             ::std::erase(m_actors, actor);
             break;
         }

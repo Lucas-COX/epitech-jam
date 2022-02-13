@@ -60,7 +60,7 @@ CXX_CPPFLAGS	:=
 LIBLOCATION		:=
 
 ## -l
-LIBBIN			:=	sfml-graphics sfml-window sfml-system sfml-audio
+LIBBIN			:=	sfml-graphics sfml-window sfml-system sfml-audio pthread
 
 
 # ============================================================================= Mode debug

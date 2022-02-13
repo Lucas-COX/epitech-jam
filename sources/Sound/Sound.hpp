@@ -19,7 +19,7 @@ class Sound : public ASound {
     ///////////////////////////////////////////////////////////////////////////
     Sound(const ::std::string &filepath);
 
-    private:
-        ::sf::SoundBuffer s_buffer;
+private:
+    ::sf::SoundBuffer s_buffer;
 };
 };
