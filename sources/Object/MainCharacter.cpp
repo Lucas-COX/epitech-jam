@@ -110,7 +110,7 @@ void ::rts::object::MainCharacter::becomeMech()
         static_cast<int>(this->m_texture.getSize().x),
         static_cast<int>(this->m_texture.getSize().y) });
     this->m_nmemb = 4;
-    this->m_offset = this->computeOffset("robot.png", 4);
+    this->m_offset = this->computeOffset("robot.png", this->m_nmemb);
     this->m_sprite.setTextureRect(::sf::IntRect{
             0,
             0,
