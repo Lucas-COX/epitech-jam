@@ -12,7 +12,8 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::MainCharacter::MainCharacter()
-    : ::rts::actor::AActor{ "gorilla.png", 6 }
+    : ::rts::actor::AActor{ "main.png", 6 }
+    , m_state(::rts::object::MainCharacter::State::MONKE)
 {
     this->setRefreshRate(75);
     this->setScale(4);
