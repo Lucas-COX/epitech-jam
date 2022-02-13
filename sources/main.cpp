@@ -15,6 +15,7 @@ int main(int argc, char **argv)
 
         while (!scene.isOver()) {
             if (!scene.update()) {
+                // TODO: die screen
                 break;
             }
             scene.draw();
