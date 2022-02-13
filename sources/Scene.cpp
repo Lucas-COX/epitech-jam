@@ -24,7 +24,7 @@
 {
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
-    m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("henricletoutpuissant.png", 3));
+    m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>());
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>());
 }
 
@@ -83,6 +83,10 @@ auto ::rts::Scene::handleEvent(
     case ::sf::Event::KeyPressed:
         switch (event.key.code) {
         case sf::Keyboard::Key::Escape: m_window.close(); return false;
+        case sf::Keyboard::Key::Left:
+            static_pointer_cast<::rts::object::MainCharacter>(m_actors[0])->goToLeftSideRoad(); return false;
+        case sf::Keyboard::Key::Right:
+            static_pointer_cast<::rts::object::MainCharacter>(m_actors[0])->goToRightSideRoad(); return false;
         default: return true;
         }
     default: return true;
