@@ -14,7 +14,9 @@
 ///////////////////////////////////////////////////////////////////////////
 ::rts::Window::Window()
     : m_window{ ::sf::VideoMode::getDesktopMode(), "RoadToSuccess", ::sf::Style::Fullscreen }
-{}
+{
+    m_window.setFramerateLimit(60);
+}
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::Window::~Window() = default;

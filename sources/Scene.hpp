@@ -89,6 +89,7 @@ private:
     ::rts::Clock m_clock;
     ::rts::sound::Music m_music;
     bool m_isOver{ false };
+    float m_lastEnergyLoss;
 
 };
 

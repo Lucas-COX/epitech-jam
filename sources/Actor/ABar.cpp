@@ -14,7 +14,7 @@
 ::rts::actor::ABar::ABar(
     const ::std::string& filenameOutside,
     const ::std::string& filenameInside,
-    ::std::uint8_t basePercentage
+    float basePercentage
 )
     : ::rts::actor::AUi{ filenameOutside }
     , m_insideBar{ filenameInside }
@@ -58,7 +58,7 @@ void ::rts::actor::ABar::draw(
 
 ///////////////////////////////////////////////////////////////////////////
 void ::rts::actor::ABar::changeValue(
-    ::std::uint8_t newValue
+    float newValue
 )
 {
     m_fillPercentage = newValue;
@@ -73,22 +73,21 @@ void ::rts::actor::ABar::changeValue(
 }
 
 auto ::rts::actor::ABar::addValue(
-    ::std::uint8_t value
-) -> ::std::uint8_t
+    float value
+) -> float
 {
-    ::std::uint8_t retValue{ 0 };
+    float retValue{ 0 };
     if (m_fillPercentage + value >= 100) {
         this->changeValue(100);
         retValue = m_fillPercentage + value - 100;
     } else {
         this->changeValue(m_fillPercentage + value);
     }
-    ::std::cout << (int)retValue << ::std::endl;
     return retValue;
 }
 
 auto ::rts::actor::ABar::subValue(
-    ::std::uint8_t value
+    float value
 ) -> bool
 {
     if (m_fillPercentage - value <= 0) {

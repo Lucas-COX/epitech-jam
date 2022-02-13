@@ -28,7 +28,7 @@ public:
     explicit ABar(
         const ::std::string& filenameOutside,
         const ::std::string& filenameInside,
-        ::std::uint8_t basePercentage
+        float basePercentage
     );
 
     ///////////////////////////////////////////////////////////////////////////
@@ -68,22 +68,22 @@ public:
     ///
     ///////////////////////////////////////////////////////////////////////////
     void changeValue(
-        ::std::uint8_t newValue
+        float newValue
     );
 
     auto addValue(
-        ::std::uint8_t value
-    ) -> ::std::uint8_t;
+        float value
+    ) -> float;
 
     auto subValue(
-        ::std::uint8_t value
+        float value
     ) -> bool;
 
 
 
 private:
 
-    ::std::uint8_t m_fillPercentage; // value as percentage
+    float m_fillPercentage; // value as percentage
     ::rts::actor::Drawable m_insideBar;
 
 };

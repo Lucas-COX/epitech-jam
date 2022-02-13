@@ -24,7 +24,10 @@
 )
     : m_window(window)
     , m_music("music.wav")
+    , m_lastEnergyLoss{ m_clock.getElapsed() }
 {
+    // m_music.play();
+
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
     m_uis.push_back(::std::make_shared<::rts::object::bar::Energy>());
@@ -32,7 +35,6 @@
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Book>(0));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(1));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(2));
-    m_music.play();
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -73,6 +75,10 @@ void ::rts::Scene::update()
             ::std::erase(m_actors, actor);
             break;
         }
+    }
+    if (m_clock.getElapsed() - m_lastEnergyLoss >= 10) {
+        m_lastEnergyLoss = m_clock.getElapsed();
+        static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
     }
 }
 
