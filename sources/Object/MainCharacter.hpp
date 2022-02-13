@@ -57,6 +57,12 @@ public:
     ///////////////////////////////////////////////////////////////////////////
     void goToRightSideRoad();
 
+    void becomeGorilla();
+
+    void becomeMan();
+
+    void becomeMech();
+
 private:
 
     ::std::uint8_t pos{ 1 };

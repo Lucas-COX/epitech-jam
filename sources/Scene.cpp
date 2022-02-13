@@ -102,15 +102,15 @@ auto ::rts::Scene::update()
     // energy loss
     if (m_clock.getElapsed() - m_lastEnergyLoss >= 10) {
         m_lastEnergyLoss = m_clock.getElapsed();
-        static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
+        //static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
     }
 
-    if (static_pointer_cast<::rts::actor::ABar>(m_uis[2])->getValue() <= 40) {
-        // become gorilla
-    } else if (static_pointer_cast<::rts::actor::ABar>(m_uis[2])->getValue() >= 80) {
-        // become mech
+    if (static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() <= 40) {
+        static_pointer_cast<::rts::object::MainCharacter>(m_actors[0])->becomeGorilla();
+    } else if (static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() >= 80) {
+        static_pointer_cast<::rts::object::MainCharacter>(m_actors[0])->becomeMech();
     } else {
-        // becorme man
+        static_pointer_cast<::rts::object::MainCharacter>(m_actors[0])->becomeMan();
     }
 
     // die
