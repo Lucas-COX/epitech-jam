@@ -79,6 +79,9 @@ public:
         float value
     ) -> bool;
 
+    [[ nodiscard ]] auto getValue()
+        -> float;
+
 
 
 private:

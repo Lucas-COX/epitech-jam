@@ -50,7 +50,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
-void ::rts::Scene::update()
+auto ::rts::Scene::update()
+    -> bool
 {
     m_window.handleEvents(*this);
     ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->update(m_clock.getElapsed(), *actor); });
@@ -80,6 +81,14 @@ void ::rts::Scene::update()
         m_lastEnergyLoss = m_clock.getElapsed();
         static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
     }
+    if (
+        static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() <= 0 ||
+        static_pointer_cast<::rts::actor::ABar>(m_uis[2])->getValue() <= 0
+    ) {
+        ::std::cout << "you died, lmao, you nub" << ::std::endl;
+        return false;
+    }
+    return true;
 }
 
 ///////////////////////////////////////////////////////////////////////////

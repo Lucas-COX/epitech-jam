@@ -14,7 +14,9 @@ int main(int argc, char **argv)
         ::rts::Scene scene{ window };
 
         while (!scene.isOver()) {
-            scene.update();
+            if (!scene.update()) {
+                break;
+            }
             scene.draw();
         }
 

@@ -98,3 +98,9 @@ auto ::rts::actor::ABar::subValue(
         return false;
     }
 }
+
+auto::rts::actor::ABar::getValue()
+    -> float
+{
+    return m_fillPercentage;
+}
