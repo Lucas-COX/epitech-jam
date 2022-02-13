@@ -85,17 +85,24 @@ public:
     );
 
     ///////////////////////////////////////////////////////////////////////////
-    /// \brief Moves the actor
+    /// \brief Plays the sound
     ///
     ///////////////////////////////////////////////////////////////////////////
-    void playSound() const;
+    static void playSound(::std::shared_ptr<APickup> pickup);
+
+    static void play(::std::shared_ptr<APickup>);
+
+    [[ nodiscard ]] auto getThread()
+        -> ::std::thread& {
+            return m_soundThread;
+        }
 
 private:
 
     APickup::Type m_type;
     ::std::uint8_t m_value;
     ::rts::sound::Sound m_sound;
-
+    ::std::thread m_soundThread;
 };
 
 

@@ -60,6 +60,9 @@ public:
             const ::rts::actor::Movable &movable
         ) override;
 
+    [[ nodiscard ]] auto getLane() const
+        -> uint8_t;
+
 private:
     float m_lastCall;
     uint8_t m_lane;

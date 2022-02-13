@@ -5,6 +5,7 @@
 #include <Object/Background.hpp>
 #include <Object/MainCharacter.hpp>
 #include <Object/Pickup/Food.hpp>
+#include <Object/Pickup/Book.hpp>
 #include <Object/Bar/Evolution.hpp>
 #include <Object/Bar/Energy.hpp>
 
@@ -22,6 +23,7 @@
     ::rts::Window& window
 )
     : m_window(window)
+    , m_music("music.wav")
 {
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
@@ -30,6 +32,8 @@
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(0));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(1));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(2));
+    m_actors.push_back(::std::make_shared<::rts::object::pickup::Book>(0));
+    m_music.play();
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -66,8 +70,7 @@ void ::rts::Scene::update()
                     ) / 5
                 );
             }}
-            // m_actors[0]->doesCollide(actor)) {
-            pickupActor->playSound();
+            ::rts::actor::APickup::playSound(pickupActor);
             ::std::erase(m_actors, actor);
             break;
         }

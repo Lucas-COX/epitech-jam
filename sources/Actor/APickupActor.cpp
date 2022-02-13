@@ -43,3 +43,9 @@ void ::rts::actor::APickupActor::update(
         m_lastCall = deltaTime;
     }
 }
+
+auto ::rts::actor::APickupActor::getLane() const
+    -> uint8_t
+{
+    return m_lane;
+}

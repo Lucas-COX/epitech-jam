@@ -1,11 +1,13 @@
 #pragma once
 
-#include "ASound.hpp"
+#include <Actor/APickupActor.hpp>
 
-namespace rts::sound {
+namespace rts::object::pickup {
 
-class Music : public ASound {
-    public:
+class Book
+    : public ::rts::actor::APickupActor {
+
+public:
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // *structors
@@ -17,12 +19,15 @@ class Music : public ASound {
     /// \brief Constructor
     ///
     ///////////////////////////////////////////////////////////////////////////
-    Music(const ::std::string &filepath, bool loop = true);
+    explicit Book(uint8_t lane);
 
-    private:
-        bool s_isLoop;
-        using ASound::s_source;
-        static ::std::shared_ptr<sf::Music> createMusic(::std::string filepath, bool isLoop);
+    ///////////////////////////////////////////////////////////////////////////
+    /// \brief Destructor
+    ///
+    ///////////////////////////////////////////////////////////////////////////
+    ~Book();
+
+private:
 };
 
-} // namespace rts::Sound
+} // namespace rts::object
