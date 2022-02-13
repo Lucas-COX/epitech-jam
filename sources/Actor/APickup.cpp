@@ -39,7 +39,6 @@ void ::rts::actor::APickup::playSound(::std::shared_ptr<APickup> pickup)
 
 void ::rts::actor::APickup::play(::std::shared_ptr<APickup> pickup)
 {
-    std::cout << "pop" << std::endl;
     pickup->m_sound.play();
     while (pickup->m_sound.isPlaying())
         std::this_thread::sleep_for(std::chrono::duration(50ms));

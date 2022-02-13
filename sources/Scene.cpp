@@ -5,6 +5,7 @@
 #include <Object/Background.hpp>
 #include <Object/MainCharacter.hpp>
 #include <Object/Pickup/Food.hpp>
+#include <Object/Pickup/Book.hpp>
 #include <Object/Bar/Evolution.hpp>
 
 
@@ -28,6 +29,7 @@
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(0));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(1));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(2));
+    m_actors.push_back(::std::make_shared<::rts::object::pickup::Book>(0));
 }
 
 ///////////////////////////////////////////////////////////////////////////
