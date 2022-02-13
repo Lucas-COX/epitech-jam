@@ -12,11 +12,13 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::bar::Energy::Energy()
-    : ::rts::actor::ABar{ "emptyBar.png", "energyBar.png", 20 }
+    : ::rts::actor::ABar{ "emptyBar.png", "energyBar.png", 30 }
 {
     this->setScale(0.25);
     this->moveRight(125);
     this->moveDown(200);
+    this->setScale(0.25);
+    m_insideBar.setScale(0.3);
 }
 
 ///////////////////////////////////////////////////////////////////////////
