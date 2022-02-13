@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Clock.hpp>
+#include <Actor/APickup.hpp>
 
 namespace rts { class Window; }
 namespace rts::actor { class AActor; }
@@ -78,8 +79,6 @@ public:
     auto handleEvent(
         sf::Event& event
     ) -> bool;
-
-
 
 private:
 

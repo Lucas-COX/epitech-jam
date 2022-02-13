@@ -27,7 +27,9 @@
     m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("henricletoutpuissant.png", 3));
     m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>("henricletoutpuissant.png", 3));
     m_actors.back()->moveLeft(1100);
-    m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>());
+    m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(0));
+    m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(1));
+    m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(2));
 }
 
 ///////////////////////////////////////////////////////////////////////////

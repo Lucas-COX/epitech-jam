@@ -32,8 +32,9 @@ public:
         const ::std::string& filenameSprite,
         const ::std::string& filenameSound,
         ::rts::actor::APickup::Type type,
-        ::std::uint8_t nmemb = 1
-    );
+        ::std::uint8_t nmemb = 1,
+        uint8_t lane = 1
+        );
 
     ///////////////////////////////////////////////////////////////////////////
     /// \brief Destructor
@@ -61,6 +62,7 @@ public:
 
 private:
     float m_lastCall;
+    uint8_t m_lane;
 };
 
 
