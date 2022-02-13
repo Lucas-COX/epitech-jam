@@ -6,6 +6,7 @@
 #include <Object/MainCharacter.hpp>
 #include <Object/Pickup/Food.hpp>
 #include <Object/Pickup/Book.hpp>
+#include <Object/Pickup/Wave.hpp>
 #include <Object/Bar/Evolution.hpp>
 #include <Object/Bar/Energy.hpp>
 
@@ -31,7 +32,7 @@
     // initialize random seed
     ::std::srand(::std::time(nullptr));
 
-    m_music.play();
+    // m_music.play();
 
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
@@ -58,6 +59,14 @@ auto ::rts::Scene::update()
     -> bool
 {
     m_window.handleEvents(*this);
+
+    if (m_clock.getElapsed() - m_lastWave >= 500) {
+        int maxValue{ static_cast<int>(2000 - (m_clock.getElapsed() - m_lastWave)) };
+        if (maxValue <= 0 || !(::std::rand() % maxValue)) {
+            m_actors.push_back(::std::make_shared<::rts::object::pickup::Wave>(::std::rand() % 3 + 4));
+            m_lastWave = m_clock.getElapsed();
+        }
+    }
 
     // book spawn
     if (m_clock.getElapsed() - m_lastPickup >= 2000) {
@@ -102,7 +111,7 @@ auto ::rts::Scene::update()
     // energy loss
     if (m_clock.getElapsed() - m_lastEnergyLoss >= 10) {
         m_lastEnergyLoss = m_clock.getElapsed();
-        //static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
+        static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
     }
 
     if (static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() <= 40) {

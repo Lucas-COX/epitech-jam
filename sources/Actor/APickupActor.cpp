@@ -11,15 +11,23 @@
     : AActor(filenameSprite, nmemb)
     , APickup(filenameSound, type)
     , m_lastCall(0)
+    , m_lane{ lane }
 {
-    m_lane = lane;
     this->setScale(0.75);
     if (lane == 0) {
         this->moveRight(575);
     } else if (lane == 1) {
         this->moveRight(880);
-    } else {
+    } else if (lane == 2) {
         this->moveRight(1175);
+    } else if (lane == 3) {
+        this->moveRight(100);
+    } else if (lane == 4) {
+        this->moveRight(200);
+    } else if (lane == 5) {
+        this->moveRight(1400);
+    } else if (lane == 6) {
+        this->moveRight(1500);
     }
 }
 
@@ -38,8 +46,16 @@ void ::rts::actor::APickupActor::update(
             this->moveLeft(0.5);
         } else if (m_lane == 1) {
             this->moveLeft(0.025);
-        } else {
+        } else if (m_lane == 2) {
             this->moveRight(0.4);
+        } else if (m_lane == 3) {
+            this->moveLeft(0.9);
+        } else if (m_lane == 4) {
+            this->moveLeft(1.0);
+        } else if (m_lane == 5) {
+            this->moveRight(0.6);
+        } else if (m_lane == 6) {
+            this->moveRight(0.7);
         }
         this->setScale(this->getScale() + 0.0025);
         m_lastCall = deltaTime;

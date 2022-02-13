@@ -92,6 +92,7 @@ private:
     bool m_isOver{ false };
     float m_lastEnergyLoss;
     float m_lastPickup;
+    float m_lastWave;
     uint8_t m_numberOfConsecutiveBook{ 0 };
 
 };
