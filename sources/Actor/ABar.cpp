@@ -71,3 +71,31 @@ void ::rts::actor::ABar::changeValue(
         static_cast<int>(size.y),
     });
 }
+
+auto ::rts::actor::ABar::addValue(
+    ::std::uint8_t value
+) -> ::std::uint8_t
+{
+    ::std::uint8_t retValue{ 0 };
+    if (m_fillPercentage + value >= 100) {
+        this->changeValue(100);
+        retValue = m_fillPercentage + value - 100;
+    } else {
+        this->changeValue(m_fillPercentage + value);
+    }
+    ::std::cout << (int)retValue << ::std::endl;
+    return retValue;
+}
+
+auto ::rts::actor::ABar::subValue(
+    ::std::uint8_t value
+) -> bool
+{
+    if (m_fillPercentage - value <= 0) {
+        this->changeValue(0);
+        return true;
+    } else {
+        this->changeValue(m_fillPercentage - value);
+        return false;
+    }
+}

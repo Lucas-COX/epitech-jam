@@ -71,6 +71,14 @@ public:
         ::std::uint8_t newValue
     );
 
+    auto addValue(
+        ::std::uint8_t value
+    ) -> ::std::uint8_t;
+
+    auto subValue(
+        ::std::uint8_t value
+    ) -> bool;
+
 
 
 private:

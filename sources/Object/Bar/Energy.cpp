@@ -1,5 +1,5 @@
 #include <pch.hpp>
-#include <Object/Pickup/Food.hpp>
+#include <Object/Bar/Energy.hpp>
 
 
 
@@ -11,11 +11,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
-::rts::object::pickup::Food::Food(uint8_t lane)
-    : ::rts::actor::APickupActor{ "bigburger.png", "bling.wav", rts::actor::APickup::fChanger, 1, lane }
+::rts::object::bar::Energy::Energy()
+    : ::rts::actor::ABar{ "emptyBar.png", "energyBar.png", 20 }
 {
-    this->setPickupValue(50);
+    this->setScale(0.25);
+    this->moveRight(125);
+    this->moveDown(200);
 }
 
 ///////////////////////////////////////////////////////////////////////////
-::rts::object::pickup::Food::~Food() = default;
+::rts::object::bar::Energy::~Energy() = default;

@@ -6,6 +6,7 @@
 #include <Object/MainCharacter.hpp>
 #include <Object/Pickup/Food.hpp>
 #include <Object/Bar/Evolution.hpp>
+#include <Object/Bar/Energy.hpp>
 
 
 
@@ -24,6 +25,7 @@
 {
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
+    m_uis.push_back(::std::make_shared<::rts::object::bar::Energy>());
     m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>());
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(0));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(1));
@@ -52,6 +54,19 @@ void ::rts::Scene::update()
     for (auto& actor : m_actors | std::views::drop(1)) {
         if (m_actors[0]->doesCollide(actor)) {
             auto pickupActor{ static_pointer_cast<::rts::actor::APickupActor>(actor) };
+            switch (pickupActor->getPickupType()) {
+            case ::rts::actor::APickup::Type::eChanger: {
+                static_pointer_cast<::rts::actor::ABar>(m_uis[1])->addValue(pickupActor->getPickupValue());
+                static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(pickupActor->getPickupValue());
+                break;
+            } case ::rts::actor::APickup::Type::fChanger: {
+                static_pointer_cast<::rts::actor::ABar>(m_uis[1])->subValue(
+                    static_pointer_cast<::rts::actor::ABar>(m_uis[2])->addValue(
+                        pickupActor->getPickupValue()
+                    ) / 5
+                );
+            }}
+            // m_actors[0]->doesCollide(actor)) {
             pickupActor->playSound();
             ::std::erase(m_actors, actor);
             break;
