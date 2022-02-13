@@ -78,8 +78,8 @@ auto ::rts::actor::ABar::addValue(
 {
     float retValue{ 0 };
     if (m_fillPercentage + value >= 100) {
-        this->changeValue(100);
         retValue = m_fillPercentage + value - 100;
+        this->changeValue(100);
     } else {
         this->changeValue(m_fillPercentage + value);
     }
