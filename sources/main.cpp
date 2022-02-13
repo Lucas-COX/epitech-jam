@@ -10,22 +10,23 @@ int main(int argc, char **argv)
     try {
         ::rts::Window window;
 
-        if (!::rts::Menu{ window }.run()) {
-            return EXIT_SUCCESS;
-        }
-
-        if (::rts::Victory{window}.run()) {
-            return EXIT_SUCCESS;
-        }
-
-        ::rts::Scene scene { window };
-
-        while (!scene.isOver()) {
-            if (!scene.update()) {
-                // TODO: die screen
+        while (true) {
+            if (!::rts::Menu{ window }.run()) {
                 break;
             }
-            scene.draw();
+
+            ::rts::Scene scene { window };
+
+            while (!scene.isOver()) {
+                if (!scene.update()) {
+                    break;
+                }
+                scene.draw();
+            }
+
+            if (scene.getEvolution() >= 100 && !::rts::Victory{window}.run()) {
+                return EXIT_SUCCESS;
+            }
         }
 
         return EXIT_SUCCESS;

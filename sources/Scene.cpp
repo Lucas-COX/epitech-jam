@@ -168,3 +168,9 @@ auto ::rts::Scene::handleEvent(
     default: return true;
     }
 }
+
+auto ::rts::Scene::getEvolution() const
+    -> int
+{
+    return static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue();
+}

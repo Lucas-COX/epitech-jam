@@ -2,7 +2,7 @@
 #include <Menu/Menu.hpp>
 
 rts::Menu::Menu(::rts::Window& window)
-    : m_window(window)
+    : m_window(window), monkeMusic("monkeMusic.wav")
 {
     m_background_T.loadFromFile("./data/Background.jpg");
     m_background.setTexture(m_background_T);
@@ -74,6 +74,7 @@ rts::Menu::triState rts::Menu::handleEvent()
 bool rts::Menu::run()
 {
     triState event;
+    monkeMusic.play();
     while (m_window.isOpen()) {
         update();
         event = handleEvent();

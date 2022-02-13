@@ -82,6 +82,9 @@ public:
         sf::Event& event
     ) -> bool;
 
+    [[ nodiscard ]] auto getEvolution() const
+        -> int;
+
 private:
 
     ::rts::Window& m_window;

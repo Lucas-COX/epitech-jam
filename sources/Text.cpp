@@ -7,6 +7,8 @@ rts::Text::Text(std::string str, unsigned int size, sf::Color color)
 {
     m_text.setFillColor(color);
     m_text.setCharacterSize(size);
+    m_text.setOutlineColor(sf::Color::Black);
+    m_text.setOutlineThickness(2);
 }
 
 rts::Text::~Text()
@@ -51,11 +53,9 @@ bool rts::Text::hittext(const rts::Window& window)
 void rts::Text::update(const rts::Window& window)
 {
     if (hittext(window)) {
-        m_text.setFillColor(sf::Color::Black);
-        m_text.setCharacterSize(40);
+        m_text.setFillColor(sf::Color::Yellow);
     } else {
         m_text.setFillColor(sf::Color::Red);
-        m_text.setCharacterSize(35);
     }
 }
 

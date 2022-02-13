@@ -5,20 +5,21 @@
 ** Victory
 */
 
+#include <pch.hpp>
 #include "Victory.hpp"
 
 rts::Victory::Victory(::rts::Window& window)
-    : v_window(window)
+    : v_window(window), henric(), aura("auraLoop.wav"), auraStart("auraStart.wav")
 {
     v_background_T.loadFromFile("./data/epitech.jpg");
     v_background.setTexture(v_background_T);
     v_background.scale(0.6, 0.5);
     v_texts.emplace_back("Victory Royale", 69, sf::Color::Red);
-    v_texts.back().center(window.getSize().x, 400);
+    v_texts.back().center(window.getSize().x + 800, 400);
     v_texts.emplace_back("Thanks for playing!", 35, sf::Color::Red);
-    v_texts.back().center(window.getSize().x, 600);
+    v_texts.back().center(window.getSize().x + 800, 600);
     v_texts.emplace_back("Press space to go back to the menu", 35, sf::Color::Red);
-    v_texts.back().center(window.getSize().x, 800);
+    v_texts.back().center(window.getSize().x + 800, 800);
 }
 
 rts::Victory::~Victory()
@@ -32,13 +33,13 @@ void rts::Victory::draw() const
     for (auto& item : v_texts) {
         item.draw(v_window);
     }
-    //v_window.draw(v_henric);
+    henric.draw(v_window);
     v_window.display();
 }
 
 void rts::Victory::update()
 {
-    //update le sprite d'Henric
+    henric.update(v_clock.getElapsed(), henric);
 }
 
 bool rts::Victory::handleEvent()
@@ -61,6 +62,8 @@ bool rts::Victory::handleEvent()
 
 bool rts::Victory::run()
 {
+    aura.play();
+    auraStart.play();
     while (v_window.isOpen()) {
         update();
         if (handleEvent())

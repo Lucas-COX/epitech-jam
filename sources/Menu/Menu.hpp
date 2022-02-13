@@ -10,8 +10,9 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-#include <Window.hpp>
+#include <Sound/Music.hpp>
 #include <Text.hpp>
+#include <Window.hpp>
 
 namespace rts {
     class Menu
@@ -62,6 +63,7 @@ namespace rts {
         ::sf::Texture m_oogway_T;
         ::sf::Sprite m_oogway;
         ::std::vector<Text> m_texts;
+        ::rts::sound::Music monkeMusic;
 
         enum triState {
             UNDIFINED = -1,
