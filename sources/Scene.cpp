@@ -102,7 +102,7 @@ auto ::rts::Scene::update()
     // energy loss
     if (m_clock.getElapsed() - m_lastEnergyLoss >= 10) {
         m_lastEnergyLoss = m_clock.getElapsed();
-        //static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
+        static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
     }
 
     if (static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() <= 40) {

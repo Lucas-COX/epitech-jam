@@ -81,7 +81,7 @@ auto ::rts::actor::ABar::addValue(
         this->changeValue(100);
         retValue = m_fillPercentage + value - 100;
     } else {
-        this->changeValue(m_fillPercentage + value + 65);
+        this->changeValue(m_fillPercentage + value);
     }
     return retValue;
 }
