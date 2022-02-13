@@ -14,7 +14,6 @@
 )
     : ::rts::actor::APickupActor { "wave.png", "burgerman.wav", rts::actor::APickup::eChanger, 1, lane }
 {
-    ::std::cout << (int)lane << ::std::endl;
     this->setPickupValue(100);
 }
 

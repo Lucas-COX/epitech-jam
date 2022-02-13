@@ -12,7 +12,7 @@
 ::rts::object::pickup::Book::Book(uint8_t lane)
     : ::rts::actor::APickupActor { "book.png", "burgerman.wav", rts::actor::APickup::eChanger, 1, lane }
 {
-    this->setPickupValue(5);
+    this->setPickupValue(15);
 }
 
 ///////////////////////////////////////////////////////////////////////////

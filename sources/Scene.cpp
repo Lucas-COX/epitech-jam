@@ -32,7 +32,7 @@
     // initialize random seed
     ::std::srand(::std::time(nullptr));
 
-    m_music.play();
+    // m_music.play();
 
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
@@ -72,7 +72,7 @@ auto ::rts::Scene::update()
     if (m_clock.getElapsed() - m_lastPickup >= 2000) {
         int maxValue{ static_cast<int>(4000 - (m_clock.getElapsed() - m_lastPickup)) };
         if (maxValue <= 0 || !(::std::rand() % maxValue)) {
-            if (m_numberOfConsecutiveBook == 3 || !(::std::rand() % 4)) {
+            if (m_numberOfConsecutiveBook == 3 || !(::std::rand() % 2)) {
                 m_numberOfConsecutiveBook = 0;
                 m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(::std::rand() % 3));
             } else {
@@ -140,6 +140,17 @@ void ::rts::Scene::draw() const
     ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->draw(m_window); });
     ::std::ranges::for_each(m_actors, [this](auto& actor) { actor->draw(m_window); });
     m_window.display();
+}
+
+///////////////////////////////////////////////////////////////////////////
+auto ::rts::Scene::hasWon()
+    -> bool
+{
+    if (static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() >= 100) {
+        ::std::cout << "fk, this dogshit player won, SHIEEEET" << ::std::endl;
+        return true;
+    }
+    return false;
 }
 
 ///////////////////////////////////////////////////////////////////////////
