@@ -91,8 +91,8 @@ private:
     ::rts::sound::Music m_music;
     bool m_isOver{ false };
     float m_lastEnergyLoss;
-    float m_lastBook;
-    float m_lastFood;
+    float m_lastPickup;
+    uint8_t m_numberOfConsecutiveBook{ 0 };
 
 };
 
