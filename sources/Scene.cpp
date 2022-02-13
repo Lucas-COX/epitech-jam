@@ -130,6 +130,11 @@ auto ::rts::Scene::update()
         ::std::cout << "you died, lmao, you nub" << ::std::endl;
         return false;
     }
+
+    // win
+    if (static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() >= 100) {
+        return false;
+    }
     return true;
 }
 

@@ -54,11 +54,14 @@ rts::Menu::triState rts::Menu::handleEvent()
     while (m_window.getWindow().pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
             m_window.close();
+            return FALSE;
         }
 
         if (event.type == sf::Event::KeyPressed) {
-            if (event.key.code == sf::Keyboard::Escape)
+            if (event.key.code == sf::Keyboard::Escape) {
                 m_window.close();
+                return FALSE;
+            }
         }
 
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
