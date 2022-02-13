@@ -91,6 +91,8 @@ private:
     ::rts::sound::Music m_music;
     bool m_isOver{ false };
     float m_lastEnergyLoss;
+    float m_lastBook;
+    float m_lastFood;
 
 };
 

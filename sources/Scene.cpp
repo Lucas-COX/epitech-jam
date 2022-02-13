@@ -25,16 +25,19 @@
     : m_window(window)
     , m_music("music.wav")
     , m_lastEnergyLoss{ m_clock.getElapsed() }
+    , m_lastBook{ m_clock.getElapsed() }
+    , m_lastFood{ m_clock.getElapsed() }
 {
+    // initialize random seed
+    ::std::srand(::std::time(nullptr));
+
     // m_music.play();
 
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
     m_uis.push_back(::std::make_shared<::rts::object::bar::Energy>());
     m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>());
-    m_actors.push_back(::std::make_shared<::rts::object::pickup::Book>(0));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(1));
-    m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(2));
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -77,10 +80,32 @@ auto ::rts::Scene::update()
             break;
         }
     }
+
+    // book spawn
+    if (m_clock.getElapsed() - m_lastBook >= 5000) {
+        int maxValue{ static_cast<int>(10000 - (m_clock.getElapsed() - m_lastBook)) };
+        if (maxValue <= 0 || !(::std::rand() % maxValue)) {
+            m_actors.push_back(::std::make_shared<::rts::object::pickup::Book>(::std::rand() % 3));
+            m_lastBook = m_clock.getElapsed();
+        }
+    }
+
+    // book food
+    if (m_clock.getElapsed() - m_lastFood >= 2000) {
+        int maxValue{ static_cast<int>(5000 - (m_clock.getElapsed() - m_lastFood)) };
+        if (maxValue <= 0 || !(::std::rand() % maxValue)) {
+            m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(::std::rand() % 3));
+            m_lastFood = m_clock.getElapsed();
+        }
+    }
+
+    // energy loss
     if (m_clock.getElapsed() - m_lastEnergyLoss >= 10) {
         m_lastEnergyLoss = m_clock.getElapsed();
         static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
     }
+
+    // die
     if (
         static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() <= 0 ||
         static_pointer_cast<::rts::actor::ABar>(m_uis[2])->getValue() <= 0
