@@ -48,11 +48,14 @@ bool rts::Victory::handleEvent()
     while (v_window.getWindow().pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
             v_window.close();
+            return false;
         }
 
         if (event.type == sf::Event::KeyPressed) {
-            if (event.key.code == sf::Keyboard::Escape)
+            if (event.key.code == sf::Keyboard::Escape) {
                 v_window.close();
+                return false;
+            }
             if (event.key.code == sf::Keyboard::Space)
                 return true;
         }
