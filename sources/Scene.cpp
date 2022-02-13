@@ -26,6 +26,7 @@
     , m_music("music.wav")
     , m_lastEnergyLoss{ m_clock.getElapsed() }
     , m_lastPickup{ m_clock.getElapsed() }
+    , m_numberOfConsecutiveBook{ 3 }
 {
     // initialize random seed
     ::std::srand(::std::time(nullptr));
