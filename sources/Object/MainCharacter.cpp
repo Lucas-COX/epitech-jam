@@ -15,9 +15,9 @@
     : ::rts::actor::AActor{ "gorilla.png", 6 }
 {
     this->setRefreshRate(75);
-    this->setScale(2);
-    this->moveDown(850);
-    this->moveRight(1920 / 2 - 65);
+    this->setScale(4);
+    this->moveDown(750);
+    this->moveRight(1920 / 2 - 135);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -40,7 +40,7 @@ void ::rts::object::MainCharacter::goToLeftSideRoad()
 {
     if (pos != 0) {
         pos--;
-        this->moveLeft(200);
+        this->moveLeft(300);
     }
 }
 
@@ -52,6 +52,6 @@ void ::rts::object::MainCharacter::goToRightSideRoad()
 {
     if (pos != 2) {
         pos++;
-        this->moveRight(200);
+        this->moveRight(300);
     }
 }
