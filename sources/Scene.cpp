@@ -29,10 +29,9 @@
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
     m_uis.push_back(::std::make_shared<::rts::object::bar::Energy>());
     m_actors.push_back(::std::make_shared<::rts::object::MainCharacter>());
-    m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(0));
+    m_actors.push_back(::std::make_shared<::rts::object::pickup::Book>(0));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(1));
     m_actors.push_back(::std::make_shared<::rts::object::pickup::Food>(2));
-    m_actors.push_back(::std::make_shared<::rts::object::pickup::Book>(0));
     m_music.play();
 }
 
