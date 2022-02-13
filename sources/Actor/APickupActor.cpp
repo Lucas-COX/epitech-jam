@@ -39,7 +39,7 @@ void ::rts::actor::APickupActor::update(
         } else if (m_lane == 2) {
             this->moveRight(0.8);
         }
-        this->setScale(this->getScale() + 0.005);
+        this->setScale(this->getScale() + 0.0025);
         m_lastCall = deltaTime;
     }
 }
