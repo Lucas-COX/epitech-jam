@@ -2,6 +2,7 @@
 .obj*
 .dep*
 .vscode*
+.idea*
 *.pdf*
 *.txt*
 *.o

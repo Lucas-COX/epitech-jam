@@ -144,7 +144,7 @@ public:
     ///////////////////////////////////////////////////////////////////////////
     void setRotation(float angle);
 
-private:
+protected:
 
     ::sf::Sprite m_sprite;
     ::sf::Texture m_texture;

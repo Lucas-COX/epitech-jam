@@ -31,7 +31,7 @@
     // initialize random seed
     ::std::srand(::std::time(nullptr));
 
-    // m_music.play();
+    m_music.play();
 
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());
@@ -77,6 +77,7 @@ auto ::rts::Scene::update()
     ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->update(m_clock.getElapsed(), *actor); });
     ::std::ranges::for_each(m_uis, [this](auto& actor){ actor->update(m_clock.getElapsed(), *actor); });
     ::std::ranges::for_each(m_actors, [this](auto& actor){ actor->update(m_clock.getElapsed(), *actor); });
+
     for (auto& actor : m_actors | std::views::drop(1)) {
         if (m_actors[0]->doesCollide(actor)) {
             auto pickupActor{ static_pointer_cast<::rts::actor::APickupActor>(actor) };
@@ -101,7 +102,15 @@ auto ::rts::Scene::update()
     // energy loss
     if (m_clock.getElapsed() - m_lastEnergyLoss >= 10) {
         m_lastEnergyLoss = m_clock.getElapsed();
-        static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
+        //static_pointer_cast<::rts::actor::ABar>(m_uis[2])->subValue(0.05);
+    }
+
+    if (static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() <= 40) {
+        static_pointer_cast<::rts::object::MainCharacter>(m_actors[0])->becomeGorilla();
+    } else if (static_pointer_cast<::rts::actor::ABar>(m_uis[1])->getValue() >= 80) {
+        static_pointer_cast<::rts::object::MainCharacter>(m_actors[0])->becomeMech();
+    } else {
+        static_pointer_cast<::rts::object::MainCharacter>(m_actors[0])->becomeMan();
     }
 
     // die
