@@ -39,5 +39,7 @@ auto ::rts::actor::AActor::doesCollide(
     ::std::shared_ptr<::rts::actor::AActor> other
 ) -> bool
 {
-    return true;
+    auto thisHitbox{ this->getSprite().getGlobalBounds() };
+    auto otherHitbox{ other->getSprite().getGlobalBounds() };
+    return thisHitbox.intersects(otherHitbox);
 }
