@@ -32,7 +32,7 @@
     // initialize random seed
     ::std::srand(::std::time(nullptr));
 
-    // m_music.play();
+    m_music.play();
 
     m_uis.push_back(::std::make_shared<::rts::object::Background>("background.png"));
     m_uis.push_back(::std::make_shared<::rts::object::bar::Evolution>());

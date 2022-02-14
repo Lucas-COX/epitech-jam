@@ -11,7 +11,7 @@ int main(int argc, char **argv)
         ::rts::Window window;
 
         while (true) {
-            if (!::rts::Menu{ window }.run()) {
+            if (window.isOpen() && !::rts::Menu { window }.run()) {
                 break;
             }
 
@@ -23,8 +23,10 @@ int main(int argc, char **argv)
                 }
                 scene.draw();
             }
+            if (!window.isOpen())
+                return EXIT_SUCCESS;
 
-            if (scene.getEvolution() >= 100 && !::rts::Victory{window}.run()) {
+            if (window.isOpen() && scene.getEvolution() >= 100 && !::rts::Victory { window }.run()) {
                 return EXIT_SUCCESS;
             }
         }
