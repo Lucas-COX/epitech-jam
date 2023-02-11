@@ -12,7 +12,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::MainCharacter::MainCharacter()
-    : ::rts::actor::AActor{ "gorilla.png", 6 }
+    : ::rts::actor::AActor{ "jokerito.png", 6 }
     , m_state(::rts::object::MainCharacter::State::MONKE)
 {
     this->setRefreshRate(75);
@@ -53,7 +53,7 @@ void ::rts::object::MainCharacter::goToRightSideRoad()
 void ::rts::object::MainCharacter::becomeGorilla()
 {
     if (m_state == State::MONKE) return;
-    if (!this->m_texture.loadFromFile("./data/sprites/gorilla.png")) {
+    if (!this->m_texture.loadFromFile("./data/sprites/jokerito.png")) {
         throw ::std::runtime_error{ "texture failed to load" };
     }
     this->m_sprite.setTexture(this->m_texture);
@@ -64,7 +64,7 @@ void ::rts::object::MainCharacter::becomeGorilla()
         static_cast<int>(this->m_texture.getSize().y)
     });
     this->m_nmemb = 6;
-    this->m_offset = this->computeOffset("gorilla.png", 6);
+    this->m_offset = this->computeOffset("jokerito.png", 6);
     this->m_sprite.setTextureRect(::sf::IntRect{
         0,
         0,
@@ -100,7 +100,7 @@ void ::rts::object::MainCharacter::becomeMan()
 void ::rts::object::MainCharacter::becomeMech()
 {
     if (m_state == State::MECH) return;
-    if (!this->m_texture.loadFromFile("./data/sprites/robot.png")) {
+    if (!this->m_texture.loadFromFile("./data/sprites/superman.png")) {
         throw ::std::runtime_error{ "texture failed to load" };
     }
     this->m_sprite.setTexture(this->m_texture);
@@ -110,7 +110,7 @@ void ::rts::object::MainCharacter::becomeMech()
         static_cast<int>(this->m_texture.getSize().x),
         static_cast<int>(this->m_texture.getSize().y) });
     this->m_nmemb = 4;
-    this->m_offset = this->computeOffset("robot.png", this->m_nmemb);
+    this->m_offset = this->computeOffset("superman.png", 6);
     this->m_sprite.setTextureRect(::sf::IntRect{
             0,
             0,
