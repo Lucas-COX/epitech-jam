@@ -10,9 +10,13 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::pickup::Book::Book(uint8_t lane)
-    : ::rts::actor::APickupActor { "book.png", "doit.wav", rts::actor::APickup::eChanger, 1, lane }
+    : ::rts::actor::APickupActor { "bandit.png", "doit.wav", rts::actor::APickup::eChanger, 1, lane }
 {
     this->setPickupValue(15);
+    this->setScale(0.1);
+    if (lane == 0) {
+        this->moveRight(50);
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////

@@ -12,9 +12,17 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::pickup::Food::Food(uint8_t lane)
-    : ::rts::actor::APickupActor{ "bigburger.png", "burgerman.wav", rts::actor::APickup::fChanger, 1, lane }
+    : ::rts::actor::APickupActor{ "emerald.png", "burgerman.wav", rts::actor::APickup::fChanger, 1, lane }
 {
     this->setPickupValue(50);
+    this->setScale(0.01);
+    if (lane == 0) {
+        this->moveRight(50);
+    } else if (lane == 1) {
+        this->moveRight(50);
+    } else if (lane == 2) {
+        this->moveRight(50);
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////
