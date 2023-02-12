@@ -12,7 +12,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 ::rts::object::pickup::Food::Food(uint8_t lane)
-    : ::rts::actor::APickupActor{ "emerald.png", "burgerman.wav", rts::actor::APickup::fChanger, 1, lane }
+    : ::rts::actor::APickupActor{ "emerald.png", "bruit-powerup.wav", rts::actor::APickup::fChanger, 1, lane }
 {
     this->setPickupValue(50);
     this->setScale(0.01);
