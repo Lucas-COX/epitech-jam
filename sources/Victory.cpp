@@ -14,7 +14,7 @@ rts::Victory::Victory(::rts::Window& window)
     v_background_T.loadFromFile("./data/epitech.jpg");
     v_background.setTexture(v_background_T);
     v_background.scale(0.6, 0.5);
-    v_texts.emplace_back("Victory Royale", 69, sf::Color::Red);
+    v_texts.emplace_back("You have become a Hero, just like him", 40, sf::Color::Red);
     v_texts.back().center(window.getSize().x + 800, 400);
     v_texts.emplace_back("Thanks for playing!", 35, sf::Color::Red);
     v_texts.back().center(window.getSize().x + 800, 600);
